@@ -1,63 +1,32 @@
 "use client";
-
 import React from "react";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
-// import theme from '../../theme/themeConfig';
 
-const { Header, Content, Footer } = Layout;
-
-const App: React.FC<{body:any}> = ({ body }) => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
-
-  const items = [
-    {
-      key: "1",
-      label: "Portfolio",
-    },
-    {
-      key: "2",
-      label: "Projects",
-    },
-    {
-      key: "3",
-      label: "Publications",
-    },
-    {
-      key: "4",
-      label: "Resume",
-    },
-  ];
+const App: React.FC = () => {
   return (
-    <Layout className="layout">
-      <Header style={{ display: "flex", alignItems: "center" }}>
-        <div className="demo-logo" />
-        <Menu
-          
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={["2"]}
-          items={items}
-        />
-      </Header>
-      <Content style={{ padding: "0 50px" }}>
-        <Breadcrumb style={{ margin: "16px 0" }}>
-          <Breadcrumb.Item>Home</Breadcrumb.Item>
-          <Breadcrumb.Item>List</Breadcrumb.Item>
-          <Breadcrumb.Item>App</Breadcrumb.Item>
-        </Breadcrumb>
-        <div
-          className="site-layout-content"
-          style={{ background: colorBgContainer }}
-        >
-          {body}
+    <section>
+      <h1 className="font-medium text-2xl mb-8 tracking-tighter">
+        hey, I'm Chhayly 👋
+      </h1>
+      <p className="prose prose-neutral dark:prose-invert">
+        {`
+        A graduate student in Computer Engineering focusing on Software Intelligence, 
+        3 years of experience as a software engineer. Experienced in data-driven applications, 
+        electronics, and embedded systems.`}
+      </p>
+      {/* <div className="columns-2 sm:columns-3 gap-4 my-8">
+        <div className="relative h-40 mb-4">
+          <Image
+            alt="Me speaking on stage at React Summit about the future of Next.js"
+            src={summit}
+            fill
+            sizes="(max-width: 768px) 213px, 33vw"
+            priority
+            className="rounded-lg object-cover"
+          />
         </div>
-      </Content>
-      <Footer style={{ textAlign: "center" }}>
-        Chhayly Sreng ©2023 | Porfolio
-      </Footer>
-    </Layout>
+        
+      </div> */}
+    </section>
   );
 };
 
