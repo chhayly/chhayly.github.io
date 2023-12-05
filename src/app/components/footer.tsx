@@ -30,7 +30,7 @@ export function Footer() {
             className="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 transition-all"
             rel="noopener noreferrer"
             target="_blank"
-            href="https://twitter.com/leeerob"
+            href=""
           >
             <ArrowIcon />
             <p className="h-7 ml-2">follow me</p>
@@ -41,7 +41,7 @@ export function Footer() {
             className="flex items-center hover:text-neutral-800 dark:hover:text-neutral-100 transition-all"
             rel="noopener noreferrer"
             target="_blank"
-            href="https://leerob.substack.com"
+            href=""
           >
             <ArrowIcon />
             <p className="h-7 ml-2">get email updates</p>
