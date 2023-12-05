@@ -43,7 +43,7 @@ export function Navbar() {
   );
 }
 
-let cx = (...classes: string[]) => classes.filter(Boolean).join(" ");
+let cx = (...classes: any[]) => classes.filter(Boolean).join(" ");
 
 function NavItem({ path, name }: { path: string; name: string }) {
   let pathname = usePathname() || "/";
