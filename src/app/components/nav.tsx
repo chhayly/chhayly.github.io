@@ -1,22 +1,22 @@
-'use client';
+"use client";
 
-import { motion, LayoutGroup } from 'framer-motion';
-import { usePathname } from 'next/navigation';
-import { Suspense } from 'react';
-import Link from 'next/link';
+import { motion, LayoutGroup } from "framer-motion";
+import { usePathname } from "next/navigation";
+import { Suspense } from "react";
+import Link from "next/link";
 
 const navItems = {
-  '/': {
-    name: 'home',
+  "/": {
+    name: "home",
   },
-  '/projects': {
-    name: 'projects',
+  "/projects": {
+    name: "projects",
   },
-  '/resume': {
-    name: 'resume',
+  "/resume": {
+    name: "resume",
   },
-  '/blog': {
-    name: 'blog',
+  "/blog": {
+    name: "blog",
   },
 };
 
@@ -43,24 +43,22 @@ export function Navbar() {
   );
 }
 
-let cx = (...classes: string[]) => classes.filter(Boolean).join(' ');
+let cx = (...classes: string[]) => classes.filter(Boolean).join(" ");
 
 function NavItem({ path, name }: { path: string; name: string }) {
-  let pathname = usePathname() || '/';
-  if (pathname.includes('/blog/')) {
-    pathname = '/blog';
+  let pathname = usePathname() || "/";
+  if (pathname.includes("/blog/")) {
+    pathname = "/blog";
   }
-  let isActive = path === pathname;
+  let isActive: boolean = path === pathname;
 
   return (
     <Link
       key={path}
       href={path}
       className={cx(
-        'transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle',
-        {
-          'text-neutral-500': !isActive,
-        }
+        "transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle",
+        { "text-neutral-500": !isActive }
       )}
     >
       <span className="relative py-1 px-2">
@@ -70,7 +68,7 @@ function NavItem({ path, name }: { path: string; name: string }) {
             className="absolute h-[1px] top-7 mx-2 inset-0 bg-neutral-200 dark:bg-neutral-800 z-[-1] dark:bg-gradient-to-r from-transparent to-neutral-900"
             layoutId="sidebar"
             transition={{
-              type: 'spring',
+              type: "spring",
               stiffness: 350,
               damping: 30,
             }}
