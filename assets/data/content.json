@@ -1,0 +1,145 @@
+{
+  "projects": [
+    {
+      "id": "voice-changer",
+      "title": "Real-time Voice Changer",
+      "image": "assets/img/voice_changer.png",
+      "description": "AI-powered real-time voice transformation application using advanced signal processing and machine learning techniques for pitch modulation and audio effects.",
+      "tech": ["Python","TensorFlow","Librosa","OpenCV"],
+      "category": ["ai","research"],
+      "github": "#",
+      "demo": "#",
+      "features": [
+        "Real-time pitch shifting and voice modulation",
+        "Multiple voice effect presets (robot, chipmunk, deep voice)",
+        "Custom neural network for voice transformation",
+        "Low-latency audio processing pipeline",
+        "Cross-platform desktop application",
+        "MIDI controller integration for live performance"
+      ],
+      "icon": "fas fa-microphone"
+    },
+    {
+      "id": "payment-gateway",
+      "title": "Payment Gateway System",
+      "image": "assets/img/placeholder.png",
+      "description": "Secure and scalable payment processing system with real-time transaction handling, fraud detection, and PCI DSS compliance.",
+      "tech": ["C#","SQL Server","Redis","Security"],
+      "category": ["backend"],
+      "github": "#",
+      "demo": null,
+      "features": [],
+      "icon": "fas fa-credit-card"
+    },
+    {
+      "id": "neuralflood",
+      "title": "NeuralFlood",
+      "image": "assets/img/placeholder.png",
+      "description": "Machine learning model for flood prediction and analysis using neural networks and environmental data to predict flooding patterns.",
+      "tech": ["Python","PyTorch","Data Science","GIS"],
+      "category": ["ai","research"],
+      "github": "#",
+      "demo": "#",
+      "features": [],
+      "icon": "fas fa-water"
+    },
+    {
+      "id": "exam-platform",
+      "title": "Exam Platform",
+      "image": "assets/img/placeholder.png",
+      "description": "Comprehensive online examination system with automated grading, analytics dashboard, and real-time monitoring capabilities.",
+      "tech": ["React","Node.js","MongoDB","Socket.io"],
+      "category": ["backend"],
+      "github": "#",
+      "demo": "#",
+      "features": [],
+      "icon": "fas fa-graduation-cap"
+    },
+    {
+      "id": "school-management",
+      "title": "School Management System",
+      "image": "assets/img/placeholder.png",
+      "description": "Complete school administration system for managing students, teachers, courses, and academic records with role-based access control.",
+      "tech": ["Django","PostgreSQL","Bootstrap","Redis"],
+      "category": ["backend"],
+      "github": "#",
+      "demo": "#",
+      "features": [],
+      "icon": "fas fa-school"
+    },
+    {
+      "id": "iot-automation",
+      "title": "IoT Automation System",
+      "image": "assets/img/placeholder.png",
+      "description": "Smart home automation system using Arduino and NodeMCU for controlling appliances and monitoring environmental conditions.",
+      "tech": ["Arduino","NodeMCU","IoT","Mobile App"],
+      "category": ["iot"],
+      "github": "#",
+      "demo": null,
+      "features": [],
+      "icon": "fas fa-robot"
+    }
+  ],
+  "publications": [
+    {
+      "title": "Advanced Machine Learning Techniques for Voice Processing",
+      "authors": ["Chhayly Sreng","et al."],
+      "venue": "International Conference on AI and Signal Processing • 2023",
+      "summary": "Novel approach to real-time voice transformation using deep learning techniques, achieving 95% accuracy in pitch modulation tasks.",
+      "pdf": "#",
+      "doi": "#"
+    },
+    {
+      "title": "Neural Networks for Environmental Data Analysis",
+      "authors": ["Chhayly Sreng","Jane Smith","John Doe"],
+      "venue": "Journal of Environmental Computing • 2023",
+      "summary": "Comprehensive study on applying neural networks to environmental monitoring systems, demonstrating improved prediction accuracy for climate patterns.",
+      "pdf": "#",
+      "doi": "#"
+    }
+  ],
+  "achievements": [
+    {
+      "title": "2nd Place - AutoDrive Challenge II",
+      "organization": "MathWorks Simulation Competition",
+      "year": "2023",
+      "description": "Developed autonomous vehicle simulation algorithms using MATLAB/Simulink, competing against top engineering teams worldwide.",
+      "icon": "fas fa-trophy"
+    },
+    {
+      "title": "YSEALI Fellowship",
+      "organization": "U.S. State Department",
+      "year": "2022",
+      "description": "Selected for prestigious Young Southeast Asian Leaders Initiative fellowship, focusing on innovation and entrepreneurship in technology.",
+      "icon": "fas fa-award"
+    },
+    {
+      "title": "ROBOCON Finalist",
+      "organization": "ABU Asia-Pacific Robot Contest",
+      "year": "2021",
+      "description": "Led robotics team to national finals, designing and programming autonomous robots for complex engineering challenges.",
+      "icon": "fas fa-medal"
+    },
+    {
+      "title": "Magna Cum Laude",
+      "organization": "Institute of Technology of Cambodia",
+      "year": "2021",
+      "description": "Graduated with highest honors in Computer Science, maintaining top 5% academic performance throughout undergraduate studies.",
+      "icon": "fas fa-graduation-cap"
+    },
+    {
+      "title": "AI Research Competition Winner",
+      "organization": "National AI Challenge",
+      "year": "2020",
+      "description": "First place in national AI research competition for developing innovative machine learning solutions for agricultural optimization.",
+      "icon": "fas fa-brain"
+    },
+    {
+      "title": "East-West Center Fellowship",
+      "organization": "East-West Center",
+      "year": "2022",
+      "description": "Recipient of competitive graduate fellowship promoting leadership and cross-cultural understanding in the Asia-Pacific region.",
+      "icon": "fas fa-globe"
+    }
+  ]
+} 

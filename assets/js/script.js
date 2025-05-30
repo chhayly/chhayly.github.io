@@ -1,27 +1,127 @@
-// DOM Content Loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize AOS (Animate On Scroll)
-    AOS.init({
-        duration: 800,
-        easing: 'ease-in-out',
-        once: true,
-        offset: 100
-    });
+// Add at top
+let contentData = {};
+function loadContent() {
+  return fetch('assets/data/content.json')
+    .then(res => res.json())
+    .then(json => { contentData = json; });
+}
 
-    // Initialize all functionality
-    initMobileNavigation();
-    initSidebarNavigation();
-    initMobileSidebar();
-    initThemeToggle();
-    initScrollProgress();
-    initActiveSectionLinks();
-    initDynamicTagline();
-    initScrollToTop();
+// Render functions
+function renderProjects() {
+  const container = document.querySelector('.projects-list');
+  container.innerHTML = '';
+  contentData.projects.forEach(proj => {
+    const div = document.createElement('div');
+    div.className = 'project-item featured';
+    div.setAttribute('data-category', proj.category.join(' '));
+    div.setAttribute('data-aos', 'fade-up');
+    div.innerHTML = `
+      <div class="project-image-container">
+        <img src="${proj.image}" alt="${proj.title}" class="project-image">
+      </div>
+      <div class="project-content">
+        <h3>${proj.title}</h3>
+        <p>${proj.description}</p>
+        <div class="project-tech">
+          ${proj.tech.map(t=>`<span>${t}</span>`).join('')}
+        </div>
+        <div class="project-links">
+          <a href="javascript:void(0)" class="project-link" onclick="openProjectModal('${proj.id}')">
+            <i class="fas fa-eye"></i> Details
+          </a>
+          ${proj.github?`<a href="${proj.github}" class="project-link"><i class="fab fa-github"></i> Code</a>`:''}
+          ${proj.demo?`<a href="${proj.demo}" class="project-link"><i class="fas fa-external-link-alt"></i> Demo</a>`:''}
+        </div>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function renderPublications() {
+  const container = document.querySelector('.publications-list');
+  container.innerHTML = '';
+  contentData.publications.forEach(pub => {
+    const div = document.createElement('div');
+    div.className = 'publication-item';
+    div.setAttribute('data-aos', 'fade-up');
+    div.innerHTML = `
+      <div class="publication-icon">
+        <i class="fas fa-file-alt"></i>
+      </div>
+      <div class="publication-content">
+        <h3>${pub.title}</h3>
+        <p class="authors">${pub.authors.join(', ')}</p>
+        <p class="publication-venue">${pub.venue}</p>
+        <p class="publication-summary">${pub.summary}</p>
+        <div class="publication-links">
+          <a href="${pub.pdf}" class="publication-link"><i class="fas fa-file-pdf"></i> PDF</a>
+          <a href="${pub.doi}" class="publication-link"><i class="fas fa-link"></i> DOI</a>
+        </div>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function renderAchievements() {
+  const container = document.querySelector('.achievements-list');
+  container.innerHTML = '';
+  contentData.achievements.forEach(a => {
+    const div = document.createElement('div');
+    div.className = 'achievement-card';
+    div.setAttribute('data-aos', 'fade-up');
+    div.innerHTML = `
+      <div class="achievement-icon">
+        <i class="${a.icon}"></i>
+      </div>
+      <div class="achievement-content">
+        <h3>${a.title}</h3>
+        <p class="achievement-organization">${a.organization}</p>
+        <p class="achievement-year">${a.year}</p>
+        <p class="achievement-description">${a.description}</p>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+// Replace static content calls
+// Wrap initializers to wait for content load
+const originalDOMContentLoaded = document.listenerCount && document.addEventListener;
+// Modify DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  loadContent().then(() => {
+    renderProjects();
+    renderPublications();
+    renderAchievements();
+    // after dynamic injection, reinit filters and modal
     initProjectFilters();
     initModal();
-    
-    // Loading animation
-    document.body.classList.add('loaded');
+  });
+
+  // Initialize AOS (Animate On Scroll)
+  AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true,
+    offset: 100
+  });
+
+  // Initialize all functionality
+  initMobileNavigation();
+  initSidebarNavigation();
+  initMobileSidebar();
+  initThemeToggle();
+  initScrollProgress();
+  initActiveSectionLinks();
+  initDynamicTagline();
+  initScrollToTop();
+  initProjectFilters();
+  initModal();
+  
+  // Loading animation
+  document.body.classList.add('loaded');
 });
 
 // Mobile Navigation functionality
@@ -337,28 +437,16 @@ function openProjectModal(projectId) {
         </div>
     `;
     
-    // lock background scroll at current position
-    const scrollY = window.scrollY || window.pageYOffset;
-    document.body.style.position = 'fixed';
-    document.body.style.top = `-${scrollY}px`;
-    document.body.style.left = '0';
-    document.body.style.right = '0';
-    document.body.style.overflowY = 'hidden';
     modal.classList.add('active');
+    // disable background scroll
+    document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
     const modal = document.getElementById('project-modal');
     modal.classList.remove('active');
-    // restore scroll position
-    const body = document.body;
-    const scrollY = parseInt(body.style.top || '0');
-    body.style.position = '';
-    body.style.top = '';
-    body.style.left = '';
-    body.style.right = '';
-    body.style.overflowY = '';
-    window.scrollTo(0, -scrollY);
+    // re-enable background scroll
+    document.body.style.overflow = '';
 }
 
 // Make modal functions available globally
@@ -366,106 +454,7 @@ window.openProjectModal = openProjectModal;
 window.closeModal = closeModal;
 
 function getProjectData(projectId) {
-    const projects = {
-        'voice-changer': {
-            title: 'Real-time Voice Changer',
-            icon: 'fas fa-microphone',
-            description: 'An advanced AI-powered voice transformation system that modifies audio in real-time using machine learning algorithms and digital signal processing techniques.',
-            features: [
-                'Real-time pitch shifting and voice modulation',
-                'Multiple voice effect presets (robot, chipmunk, deep voice)',
-                'Custom neural network for voice transformation',
-                'Low-latency audio processing pipeline',
-                'Cross-platform desktop application',
-                'MIDI controller integration for live performance'
-            ],
-            technologies: ['Python', 'TensorFlow', 'PyTorch', 'Librosa', 'NumPy', 'PyQt5', 'JACK Audio'],
-            github: '#',
-            demo: '#'
-        },
-        'payment-gateway': {
-            title: 'Payment Gateway System',
-            icon: 'fas fa-credit-card',
-            description: 'A robust and secure payment processing system handling millions of dollars in transactions daily with advanced fraud detection and PCI DSS compliance.',
-            features: [
-                'Multi-currency payment processing',
-                'Real-time fraud detection algorithms',
-                'PCI DSS Level 1 compliance',
-                'API integration for major payment providers',
-                'Comprehensive transaction analytics dashboard',
-                'Automated settlement and reconciliation'
-            ],
-            technologies: ['C#', '.NET Core', 'SQL Server', 'Redis', 'Docker', 'Azure', 'SignalR'],
-            github: '#',
-            demo: null
-        },
-        'neuralflood': {
-            title: 'NeuralFlood',
-            icon: 'fas fa-water',
-            description: 'A machine learning system for predicting flood patterns using environmental data, neural networks, and geospatial analysis to assist in disaster preparedness.',
-            features: [
-                'Predictive flood modeling using LSTM networks',
-                'Real-time weather data integration',
-                'Geospatial analysis with satellite imagery',
-                'Risk assessment and early warning system',
-                'Interactive web-based dashboard',
-                'Mobile alerts for affected communities'
-            ],
-            technologies: ['Python', 'PyTorch', 'TensorFlow', 'Pandas', 'GeoPandas', 'Folium', 'Flask', 'PostgreSQL'],
-            github: '#',
-            demo: '#'
-        },
-        'exam-platform': {
-            title: 'Online Exam Platform',
-            icon: 'fas fa-graduation-cap',
-            description: 'A comprehensive examination system with automated grading, real-time monitoring, and detailed analytics for educational institutions.',
-            features: [
-                'Secure browser lockdown during exams',
-                'Automated grading with AI-powered essay scoring',
-                'Real-time proctoring and cheating detection',
-                'Detailed performance analytics and reports',
-                'Question bank management system',
-                'Multi-language support'
-            ],
-            technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io', 'JWT', 'Redis', 'AWS S3'],
-            github: '#',
-            demo: '#'
-        },
-        'school-management': {
-            title: 'School Management System',
-            icon: 'fas fa-school',
-            description: 'A complete educational institution management platform handling student records, academic planning, and administrative tasks.',
-            features: [
-                'Student enrollment and record management',
-                'Course scheduling and timetable generation',
-                'Grade book and transcript generation',
-                'Parent-teacher communication portal',
-                'Financial management and fee tracking',
-                'Role-based access control system'
-            ],
-            technologies: ['Django', 'Python', 'PostgreSQL', 'Bootstrap', 'jQuery', 'Celery', 'Redis'],
-            github: '#',
-            demo: '#'
-        },
-        'iot-automation': {
-            title: 'IoT Automation System',
-            icon: 'fas fa-robot',
-            description: 'A smart home automation system using microcontrollers and IoT protocols for controlling appliances and monitoring environmental conditions.',
-            features: [
-                'Remote appliance control via mobile app',
-                'Environmental monitoring (temperature, humidity, air quality)',
-                'Voice control integration with Alexa/Google Assistant',
-                'Energy consumption tracking and optimization',
-                'Security system integration',
-                'Custom automation rules and scheduling'
-            ],
-            technologies: ['Arduino', 'ESP32', 'NodeMCU', 'MQTT', 'React Native', 'Firebase', 'C++'],
-            github: '#',
-            demo: null
-        }
-    };
-    
-    return projects[projectId] || {};
+  return contentData.projects.find(p => p.id === projectId) || {};
 }
 
 // Scroll to top functionality
