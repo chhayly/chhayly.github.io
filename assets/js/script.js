@@ -1,0 +1,766 @@
+// DOM Content Loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize AOS (Animate On Scroll)
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100
+    });
+
+    // Initialize all functionality
+    initMobileNavigation();
+    initSidebarNavigation();
+    initMobileSidebar();
+    initThemeToggle();
+    initScrollProgress();
+    initActiveSectionLinks();
+    initDynamicTagline();
+    initScrollToTop();
+    initProjectFilters();
+    initModal();
+    
+    // Loading animation
+    document.body.classList.add('loaded');
+});
+
+// Mobile Navigation functionality
+function initMobileNavigation() {
+    const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Mobile menu toggle
+    if (mobileNavToggle) {
+        mobileNavToggle.addEventListener('click', () => {
+            mobileNavToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // Close mobile menu when clicking on a link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileNavToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!mobileNavToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            mobileNavToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+
+    // Smooth scrolling for mobile navigation links
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                const offsetTop = window.innerWidth <= 1024 ? targetSection.offsetTop - 80 : targetSection.offsetTop - 20;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Sidebar Navigation functionality
+function initSidebarNavigation() {
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+    // Smooth scrolling for sidebar navigation links
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                const offsetTop = window.innerWidth <= 1024 ? targetSection.offsetTop - 80 : targetSection.offsetTop - 20;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+}
+
+// Theme toggle functionality
+function initThemeToggle() {
+    const sidebarThemeToggle = document.getElementById('sidebar-theme-toggle');
+    const globalThemeToggle = document.getElementById('global-theme-toggle');
+    const globalThemeIcon = globalThemeToggle?.querySelector('i');
+    const sidebarThemeIcon = sidebarThemeToggle?.querySelector('i');
+    const sidebarThemeText = sidebarThemeToggle?.querySelector('span');
+    
+    // Check for saved theme preference or default to light mode
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    
+    // Update icons based on current theme
+    updateThemeIcon(currentTheme, sidebarThemeIcon);
+    updateThemeIcon(currentTheme, globalThemeIcon);
+    updateSidebarThemeToggle(currentTheme, sidebarThemeIcon, sidebarThemeText);
+    
+    // Theme toggle event listeners
+    const toggleTheme = () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme, sidebarThemeIcon);
+        updateThemeIcon(newTheme, globalThemeIcon);
+        updateSidebarThemeToggle(newTheme, sidebarThemeIcon, sidebarThemeText);
+        
+        // Add a subtle animation
+        document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+        setTimeout(() => {
+            document.body.style.transition = '';
+        }, 300);
+    };
+
+    [sidebarThemeToggle, globalThemeToggle].forEach(btn=>{
+        if(btn) btn.addEventListener('click',toggleTheme);
+    });
+}
+
+function updateThemeIcon(theme, icon) {
+    if (icon) {
+        icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+}
+
+function updateSidebarThemeToggle(theme, icon, text) {
+    if (icon) {
+        icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+    if (text) {
+        text.textContent = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+    }
+}
+
+// Scroll progress indicator
+function initScrollProgress() {
+    const scrollProgress = document.createElement('div');
+    scrollProgress.className = 'scroll-progress';
+    document.body.appendChild(scrollProgress);
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = docHeight > 0 ? scrollTop / docHeight : 0;
+        scrollProgress.style.transform = `scaleX(${scrollPercent})`;
+    });
+}
+
+// Active section links based on scroll position
+function initActiveSectionLinks() {
+    const sections = document.querySelectorAll('section[id]');
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+    const mobileNavLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        const scrollPos = window.pageYOffset + 100;
+
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        // Update sidebar navigation
+        sidebarLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+
+        // Update mobile navigation
+        mobileNavLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    });
+}
+
+// Dynamic tagline effect
+function initDynamicTagline() {
+    const taglineElement = document.getElementById('tagline-text');
+    if (!taglineElement) return;
+    
+    const taglines = [
+        "5+ Years in Software & AI",
+        "Published AAAI Author", 
+        "Systems Architect & Researcher",
+        "MathWorks Competition Winner",
+        "YSEALI Fellowship Recipient"
+    ];
+    
+    let currentIndex = 0;
+    const typingSpeed = 100;
+    const deletingSpeed = 50;
+    const pauseDuration = 2500;
+    
+    function typeWriter() {
+        const currentTagline = taglines[currentIndex];
+        const currentText = taglineElement.textContent;
+        
+        if (currentText.length < currentTagline.length) {
+            // Typing
+            taglineElement.textContent = currentTagline.substring(0, currentText.length + 1);
+            setTimeout(typeWriter, typingSpeed);
+        } else {
+            // Pause then delete
+            setTimeout(() => {
+                deleteText();
+            }, pauseDuration);
+        }
+    }
+    
+    function deleteText() {
+        const currentText = taglineElement.textContent;
+        
+        if (currentText.length > 0) {
+            taglineElement.textContent = currentText.substring(0, currentText.length - 1);
+            setTimeout(deleteText, deletingSpeed);
+        } else {
+            // Move to next tagline
+            currentIndex = (currentIndex + 1) % taglines.length;
+            setTimeout(typeWriter, 500);
+        }
+    }
+    
+    // Start the effect after a delay
+    setTimeout(typeWriter, 1500);
+}
+
+// Project filters functionality
+function initProjectFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectItems = document.querySelectorAll('.project-item');
+    
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+            
+            const filter = btn.getAttribute('data-filter');
+            
+            projectItems.forEach(item => {
+                const categories = item.getAttribute('data-category').split(' ');
+                
+                if (filter === 'all' || categories.includes(filter)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        });
+    });
+}
+
+// Modal functionality
+function initModal() {
+    const modal = document.getElementById('project-modal');
+    const modalClose = document.querySelector('.modal-close');
+    
+    // Close modal when clicking the X
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+    
+    // Close modal when clicking outside
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}
+
+function openProjectModal(projectId) {
+    const modal = document.getElementById('project-modal');
+    const modalBody = document.getElementById('modal-body');
+    
+    const projectData = getProjectData(projectId);
+    
+    modalBody.innerHTML = `
+        <h2>${projectData.title}</h2>
+        <div class="modal-project-info">
+            <div class="modal-project-image">
+                <i class="${projectData.icon}"></i>
+            </div>
+            <div class="modal-project-details">
+                <p class="modal-description">${projectData.description}</p>
+                <div class="modal-features">
+                    <h3>Key Features</h3>
+                    <ul>
+                        ${projectData.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="modal-tech">
+                    <h3>Technologies Used</h3>
+                    <div class="modal-tech-tags">
+                        ${projectData.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                    </div>
+                </div>
+                <div class="modal-links">
+                    ${projectData.github ? `<a href="${projectData.github}" class="modal-btn" target="_blank"><i class="fab fa-github"></i> View Code</a>` : ''}
+                    ${projectData.demo ? `<a href="${projectData.demo}" class="modal-btn" target="_blank"><i class="fas fa-external-link-alt"></i> Live Demo</a>` : ''}
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // lock background scroll at current position
+    const scrollY = window.scrollY || window.pageYOffset;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.left = '0';
+    document.body.style.right = '0';
+    document.body.style.overflowY = 'hidden';
+    modal.classList.add('active');
+}
+
+function closeModal() {
+    const modal = document.getElementById('project-modal');
+    modal.classList.remove('active');
+    // restore scroll position
+    const body = document.body;
+    const scrollY = parseInt(body.style.top || '0');
+    body.style.position = '';
+    body.style.top = '';
+    body.style.left = '';
+    body.style.right = '';
+    body.style.overflowY = '';
+    window.scrollTo(0, -scrollY);
+}
+
+// Make modal functions available globally
+window.openProjectModal = openProjectModal;
+window.closeModal = closeModal;
+
+function getProjectData(projectId) {
+    const projects = {
+        'voice-changer': {
+            title: 'Real-time Voice Changer',
+            icon: 'fas fa-microphone',
+            description: 'An advanced AI-powered voice transformation system that modifies audio in real-time using machine learning algorithms and digital signal processing techniques.',
+            features: [
+                'Real-time pitch shifting and voice modulation',
+                'Multiple voice effect presets (robot, chipmunk, deep voice)',
+                'Custom neural network for voice transformation',
+                'Low-latency audio processing pipeline',
+                'Cross-platform desktop application',
+                'MIDI controller integration for live performance'
+            ],
+            technologies: ['Python', 'TensorFlow', 'PyTorch', 'Librosa', 'NumPy', 'PyQt5', 'JACK Audio'],
+            github: '#',
+            demo: '#'
+        },
+        'payment-gateway': {
+            title: 'Payment Gateway System',
+            icon: 'fas fa-credit-card',
+            description: 'A robust and secure payment processing system handling millions of dollars in transactions daily with advanced fraud detection and PCI DSS compliance.',
+            features: [
+                'Multi-currency payment processing',
+                'Real-time fraud detection algorithms',
+                'PCI DSS Level 1 compliance',
+                'API integration for major payment providers',
+                'Comprehensive transaction analytics dashboard',
+                'Automated settlement and reconciliation'
+            ],
+            technologies: ['C#', '.NET Core', 'SQL Server', 'Redis', 'Docker', 'Azure', 'SignalR'],
+            github: '#',
+            demo: null
+        },
+        'neuralflood': {
+            title: 'NeuralFlood',
+            icon: 'fas fa-water',
+            description: 'A machine learning system for predicting flood patterns using environmental data, neural networks, and geospatial analysis to assist in disaster preparedness.',
+            features: [
+                'Predictive flood modeling using LSTM networks',
+                'Real-time weather data integration',
+                'Geospatial analysis with satellite imagery',
+                'Risk assessment and early warning system',
+                'Interactive web-based dashboard',
+                'Mobile alerts for affected communities'
+            ],
+            technologies: ['Python', 'PyTorch', 'TensorFlow', 'Pandas', 'GeoPandas', 'Folium', 'Flask', 'PostgreSQL'],
+            github: '#',
+            demo: '#'
+        },
+        'exam-platform': {
+            title: 'Online Exam Platform',
+            icon: 'fas fa-graduation-cap',
+            description: 'A comprehensive examination system with automated grading, real-time monitoring, and detailed analytics for educational institutions.',
+            features: [
+                'Secure browser lockdown during exams',
+                'Automated grading with AI-powered essay scoring',
+                'Real-time proctoring and cheating detection',
+                'Detailed performance analytics and reports',
+                'Question bank management system',
+                'Multi-language support'
+            ],
+            technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io', 'JWT', 'Redis', 'AWS S3'],
+            github: '#',
+            demo: '#'
+        },
+        'school-management': {
+            title: 'School Management System',
+            icon: 'fas fa-school',
+            description: 'A complete educational institution management platform handling student records, academic planning, and administrative tasks.',
+            features: [
+                'Student enrollment and record management',
+                'Course scheduling and timetable generation',
+                'Grade book and transcript generation',
+                'Parent-teacher communication portal',
+                'Financial management and fee tracking',
+                'Role-based access control system'
+            ],
+            technologies: ['Django', 'Python', 'PostgreSQL', 'Bootstrap', 'jQuery', 'Celery', 'Redis'],
+            github: '#',
+            demo: '#'
+        },
+        'iot-automation': {
+            title: 'IoT Automation System',
+            icon: 'fas fa-robot',
+            description: 'A smart home automation system using microcontrollers and IoT protocols for controlling appliances and monitoring environmental conditions.',
+            features: [
+                'Remote appliance control via mobile app',
+                'Environmental monitoring (temperature, humidity, air quality)',
+                'Voice control integration with Alexa/Google Assistant',
+                'Energy consumption tracking and optimization',
+                'Security system integration',
+                'Custom automation rules and scheduling'
+            ],
+            technologies: ['Arduino', 'ESP32', 'NodeMCU', 'MQTT', 'React Native', 'Firebase', 'C++'],
+            github: '#',
+            demo: null
+        }
+    };
+    
+    return projects[projectId] || {};
+}
+
+// Scroll to top functionality
+function initScrollToTop() {
+    // Create scroll to top button
+    const scrollToTopBtn = document.createElement('button');
+    scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    scrollToTopBtn.className = 'scroll-to-top';
+    scrollToTopBtn.setAttribute('aria-label', 'Scroll to top');
+    
+    // Style the button
+    Object.assign(scrollToTopBtn.style, {
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px',
+        width: '50px',
+        height: '50px',
+        borderRadius: '50%',
+        backgroundColor: 'var(--primary-color)',
+        color: 'white',
+        border: 'none',
+        cursor: 'pointer',
+        fontSize: '18px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: 'var(--shadow-lg)',
+        transform: 'translateY(100px)',
+        transition: 'transform 0.3s ease, background-color 0.3s ease',
+        zIndex: '1000'
+    });
+    
+    document.body.appendChild(scrollToTopBtn);
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollToTopBtn.style.transform = 'translateY(0)';
+        } else {
+            scrollToTopBtn.style.transform = 'translateY(100px)';
+        }
+    });
+    
+    // Scroll to top when clicked
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // Hover effect
+    scrollToTopBtn.addEventListener('mouseenter', () => {
+        scrollToTopBtn.style.backgroundColor = 'var(--primary-dark)';
+    });
+    
+    scrollToTopBtn.addEventListener('mouseleave', () => {
+        scrollToTopBtn.style.backgroundColor = 'var(--primary-color)';
+    });
+}
+
+// Keyboard navigation support
+function initKeyboardNavigation() {
+    document.addEventListener('keydown', (e) => {
+        // ESC key to close mobile menu
+        if (e.key === 'Escape') {
+            const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            mobileNavToggle.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+}
+
+// Initialize enhanced features after page load
+window.addEventListener('load', () => {
+    initKeyboardNavigation();
+});
+
+// Add CSS animations dynamically
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    .animate-in {
+        animation: fadeInUp 0.8s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Modal styles */
+    .modal-project-info {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 2rem;
+        margin-top: 1.5rem;
+    }
+    
+    .modal-project-image {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        border-radius: 1rem;
+        color: white;
+        font-size: 4rem;
+        aspect-ratio: 1;
+    }
+    
+    .modal-description {
+        font-size: 1.125rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        color: var(--text-secondary);
+    }
+    
+    .modal-features,
+    .modal-tech {
+        margin-bottom: 1.5rem;
+    }
+    
+    .modal-features h3,
+    .modal-tech h3 {
+        color: var(--text-primary);
+        margin-bottom: 0.75rem;
+    }
+    
+    .modal-features ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .modal-features li {
+        padding: 0.5rem 0;
+        color: var(--text-secondary);
+        position: relative;
+        padding-left: 1.5rem;
+    }
+    
+    .modal-features li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        color: var(--primary-color);
+        font-weight: bold;
+    }
+    
+    .modal-tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .tech-tag {
+        background-color: var(--bg-secondary);
+        color: var(--text-primary);
+        padding: 0.25rem 0.75rem;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+    
+    .modal-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .modal-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background-color: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: var(--transition);
+    }
+    
+    .modal-btn:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-1px);
+    }
+    
+    @media (max-width: 768px) {
+        .modal-project-info {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+        
+        .modal-project-image {
+            font-size: 3rem;
+            aspect-ratio: 2/1;
+        }
+        
+        .modal-links {
+            flex-direction: column;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Mobile Sidebar functionality
+function initMobileSidebar() {
+    // Create sidebar overlay for mobile
+    const overlay = document.createElement('div');
+    overlay.className = 'sidebar-overlay';
+    document.body.appendChild(overlay);
+    
+    const sidebar = document.getElementById('sidebar');
+    
+    // Create mobile sidebar toggle button (add to mobile nav if needed)
+    const sidebarToggleBtn = document.createElement('button');
+    sidebarToggleBtn.innerHTML = '<i class="fas fa-bars"></i>';
+    sidebarToggleBtn.className = 'mobile-sidebar-toggle';
+    sidebarToggleBtn.setAttribute('aria-label', 'Toggle sidebar');
+    
+    // Style the button
+    Object.assign(sidebarToggleBtn.style, {
+        position: 'fixed',
+        top: '1rem',
+        left: '1rem',
+        width: '3rem',
+        height: '3rem',
+        borderRadius: '0.5rem',
+        backgroundColor: 'var(--primary-color)',
+        color: 'white',
+        border: 'none',
+        cursor: 'pointer',
+        fontSize: '1.25rem',
+        display: 'none',
+        alignItems: 'center',
+        justifyContent: 'center',
+        boxShadow: 'var(--shadow-lg)',
+        zIndex: '1600',
+        transition: 'all 0.3s ease'
+    });
+    
+    document.body.appendChild(sidebarToggleBtn);
+    
+    // Show/hide mobile sidebar toggle based on screen size
+    function updateSidebarToggle() {
+        if (window.innerWidth <= 1024) {
+            sidebarToggleBtn.style.display = 'flex';
+        } else {
+            sidebarToggleBtn.style.display = 'none';
+            sidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+    }
+    
+    // Toggle sidebar on mobile
+    sidebarToggleBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active');
+    });
+    
+    // Close sidebar when clicking overlay
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+    
+    // Close sidebar when clicking sidebar links on mobile
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (window.innerWidth <= 1024) {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+            }
+        });
+    });
+    
+    // Update on resize
+    window.addEventListener('resize', updateSidebarToggle);
+    updateSidebarToggle();
+} 
