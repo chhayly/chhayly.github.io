@@ -3,7 +3,7 @@
     {
       "id": "voice-changer",
       "title": "Real-time Voice Changer",
-      "image": "assets/img/voice_changer.png",
+      "image": "images/voice_changer.png",
       "description": "AI-powered real-time voice transformation application using advanced signal processing and machine learning techniques for pitch modulation and audio effects.",
       "tech": ["Python","TensorFlow","Librosa","OpenCV"],
       "category": ["ai","research"],
@@ -22,7 +22,7 @@
     {
       "id": "payment-gateway",
       "title": "Payment Gateway System",
-      "image": "assets/img/placeholder.png",
+      "image": "images/placeholder.png",
       "description": "Secure and scalable payment processing system with real-time transaction handling, fraud detection, and PCI DSS compliance.",
       "tech": ["C#","SQL Server","Redis","Security"],
       "category": ["backend"],
@@ -34,7 +34,7 @@
     {
       "id": "neuralflood",
       "title": "NeuralFlood",
-      "image": "assets/img/placeholder.png",
+      "image": "images/placeholder.png",
       "description": "Machine learning model for flood prediction and analysis using neural networks and environmental data to predict flooding patterns.",
       "tech": ["Python","PyTorch","Data Science","GIS"],
       "category": ["ai","research"],
@@ -46,7 +46,7 @@
     {
       "id": "exam-platform",
       "title": "Exam Platform",
-      "image": "assets/img/placeholder.png",
+      "image": "images/placeholder.png",
       "description": "Comprehensive online examination system with automated grading, analytics dashboard, and real-time monitoring capabilities.",
       "tech": ["React","Node.js","MongoDB","Socket.io"],
       "category": ["backend"],
@@ -58,7 +58,7 @@
     {
       "id": "school-management",
       "title": "School Management System",
-      "image": "assets/img/placeholder.png",
+      "image": "images/placeholder.png",
       "description": "Complete school administration system for managing students, teachers, courses, and academic records with role-based access control.",
       "tech": ["Django","PostgreSQL","Bootstrap","Redis"],
       "category": ["backend"],
@@ -70,7 +70,7 @@
     {
       "id": "iot-automation",
       "title": "IoT Automation System",
-      "image": "assets/img/placeholder.png",
+      "image": "images/placeholder.png",
       "description": "Smart home automation system using Arduino and NodeMCU for controlling appliances and monitoring environmental conditions.",
       "tech": ["Arduino","NodeMCU","IoT","Mobile App"],
       "category": ["iot"],

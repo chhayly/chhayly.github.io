@@ -2,19 +2,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
-
-interface Project {
-  id: string;
-  title: string;
-  image: string; // Main project list image
-  description: string;
-  tech: string[];
-  category: string[];
-  github: string | null;
-  demo: string | null;
-  features?: string[]; // For modal
-  icon?: string;      // For modal icon
-}
+import type { Project } from '../../../types';
 
 interface ProjectListProps {
   projects: Project[];
