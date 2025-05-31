@@ -203,7 +203,7 @@ function initThemeToggle() {
     const sidebarThemeText = sidebarThemeToggle?.querySelector('span');
     
     // Check for saved theme preference or default to light mode
-    const currentTheme = localStorage.getItem('theme') || 'light';
+    const currentTheme = localStorage.getItem('theme') || 'dark';
     document.documentElement.setAttribute('data-theme', currentTheme);
     
     // Update icons based on current theme
