@@ -287,15 +287,6 @@ const HomePage = () => {
         </div>
       </footer>
 
-      {/* Project Modal placeholder - structure only, functionality later */}
-      <div id="project-modal" className="modal" style={{display: 'none'}}> {/* Hidden by default */}
-        <div className="modal-content">
-            <span className="modal-close" onClick={(e) => e.preventDefault()}>&times;</span> {/* Close functionality to be added */}
-            <div className="modal-body" id="modal-body">
-                {/* Modal content will be dynamically inserted here */}
-            </div>
-        </div>
-      </div>
     </>
   );
 };
