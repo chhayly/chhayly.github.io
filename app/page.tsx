@@ -1,20 +1,22 @@
 // app/page.tsx
 import React from 'react';
 import contentData from './data/content.json'; // Import the data
+import ProjectList from './components/ProjectList'; // Import the new client component
 
 // Define interfaces based on content.json structure
-interface Project {
-  id: string;
-  title: string;
-  image: string;
-  description: string;
-  tech: string[];
-  category: string[]; // Make sure this matches JSON
-  github: string | null;
-  demo: string | null;
-  features?: string[]; // Optional
-  icon?: string; // Optional
-}
+// Project interface can be removed if ProjectList defines its own or imports from shared types
+// interface Project {
+//   id: string;
+//   title: string;
+//   image: string;
+//   description: string;
+//   tech: string[];
+//   category: string[]; // Make sure this matches JSON
+//   github: string | null;
+//   demo: string | null;
+//   features?: string[]; // Optional
+//   icon?: string; // Optional
+// }
 
 interface Publication {
   title: string;
@@ -38,6 +40,7 @@ interface Achievement {
 const HomePage = () => {
   const { projects, publications, achievements } = contentData;
 
+  // formatImagePath function can be removed if ProjectList handles its own image paths
   const formatImagePath = (path: string) => {
     if (path && path.startsWith('assets/')) {
       return `/${path}`;
@@ -200,48 +203,11 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Projects Section */}
+      {/* Projects Section - Now uses ProjectList component */}
       <section id="projects" className="projects">
         <div className="container">
           <h2 className="section-title" data-aos="fade-up">Featured Projects</h2>
-          <div className="project-filters" data-aos="fade-up">
-            <button className="filter-btn active" data-filter="all">All Projects</button>
-            <button className="filter-btn" data-filter="ai">AI & ML</button>
-            <button className="filter-btn" data-filter="backend">Backend</button>
-            <button className="filter-btn" data-filter="research">Research</button>
-            <button className="filter-btn" data-filter="iot">IoT</button>
-          </div>
-          <div className="projects-list">
-            {projects.map((project: Project) => (
-              <div key={project.id} className="project-item featured" data-aos="fade-up" data-category={project.category.join(' ')}>
-                <div className="project-image-container">
-                  <img src={formatImagePath(project.image)} alt={project.title} className="project-image" />
-                </div>
-                <div className="project-content">
-                  <h3>{project.title}</h3>
-                  <p>{project.description}</p>
-                  <div className="project-tech">
-                    {project.tech.map(tech => <span key={tech}>{tech}</span>)}
-                  </div>
-                  <div className="project-links">
-                    <a href="#!" className="project-link" onClick={(e) => e.preventDefault()}>
-                      <i className="fas fa-eye"></i> Details
-                    </a>
-                    {project.github && project.github !== "#" && (
-                      <a href={project.github} className="project-link" target="_blank" rel="noopener noreferrer">
-                        <i className="fab fa-github"></i> Code
-                      </a>
-                    )}
-                    {project.demo && project.demo !== "#" && (
-                      <a href={project.demo} className="project-link" target="_blank" rel="noopener noreferrer">
-                        <i className="fas fa-external-link-alt"></i> Demo
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+          <ProjectList projects={projects} /> {/* Pass projects data as prop */}
         </div>
       </section>
 
