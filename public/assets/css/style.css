@@ -1569,4 +1569,178 @@ textarea:focus {
 .global-theme-toggle{position:fixed;top:1rem;right:1rem;width:3rem;height:3rem;border-radius:50%;background-color:var(--bg-tertiary);color:var(--text-primary);border:none;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);cursor:pointer;transition:var(--transition);z-index:1200}
 .global-theme-toggle:hover{background-color:var(--primary-color);color:#fff}
 .resume-link a{color:var(--primary-color);font-weight:600;text-decoration:none}
-.resume-link a:hover{text-decoration:underline} 
+.resume-link a:hover{text-decoration:underline}
+/* Added CSS for Mobile Sidebar Toggle and Overlay */
+.sidebar-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998; /* Below sidebar, above content */
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+.mobile-sidebar-toggle {
+  display: none; /* Hidden by default, shown via JS/CSS media query logic */
+  position: fixed;
+  top: 20px; /* Adjust as needed */
+  left: 20px; /* Adjust as needed */
+  z-index: 1001; /* Above overlay */
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-md);
+}
+
+/* Sidebar active state for mobile (adjust if existing .sidebar.active needs override) */
+/* This is a more specific rule for the transform part if needed, or integrate with existing */
+@media (max-width: 1024px) {
+  .mobile-sidebar-toggle {
+    display: flex; /* Show on mobile */
+    align-items: center;
+    justify-content: center;
+  }
+  .sidebar { /* Default state for mobile, before 'active' class is added */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out; /* Ensure transition is defined */
+    z-index: 999; /* Ensure it's above the overlay */
+  }
+  .sidebar.active { /* State when sidebar should be visible on mobile */
+    transform: translateX(0);
+    box-shadow: 0 0 20px rgba(0,0,0,0.2); /* Example shadow */
+  }
+}
+
+/* Added/Ensured CSS for Project Modal Content */
+.modal.active { /* Ensure this is how modal becomes visible if not already defined properly */
+    display: flex;
+    align-items: center; /* Vertically center */
+    justify-content: center; /* Horizontally center */
+    /* other styles like background, z-index should be there from previous appends */
+}
+.modal-project-info {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Or as per original design */
+    gap: var(--spacing-8); /* Or 2rem */
+    margin-top: 1.5rem;
+    align-items: start; /* Align items to the start of the grid cell */
+}
+.modal-project-image { /* Container for icon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: var(--radius-xl); /* Or 1rem */
+    color: white;
+    font-size: 4rem; /* Or as needed */
+    padding: 1rem; /* Add some padding */
+    aspect-ratio: 1 / 1; /* Make it square */
+    max-width: 150px; /* Limit max size */
+    margin: 0 auto; /* Center if grid column is wider */
+}
+.modal-project-details {
+    text-align: left; /* Ensure text is left-aligned */
+}
+.modal-description {
+    font-size: var(--font-size-base); /* Or 1.125rem */
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+}
+.modal-features,
+.modal-tech {
+    margin-bottom: 1.5rem;
+}
+.modal-features h3,
+.modal-tech h3 {
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    font-size: var(--font-size-lg);
+}
+.modal-features ul {
+    list-style: none;
+    padding: 0;
+}
+.modal-features li {
+    padding: 0.5rem 0;
+    color: var(--text-secondary);
+    position: relative;
+    padding-left: 1.5rem; /* Space for the checkmark */
+}
+.modal-features li::before {
+    content: '✓'; /* Checkmark */
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+.modal-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.tech-tag { /* Ensure this class is styled, might be same as project-tech span */
+    background-color: var(--bg-secondary); /* Or var(--bg-tertiary) */
+    color: var(--text-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius); /* Or var(--radius-sm) */
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+}
+.modal-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+.modal-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: var(--radius); /* Or 0.5rem */
+    font-weight: 600;
+    transition: var(--transition);
+    border: none; /* Ensure buttons don't have default borders */
+}
+.modal-btn:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-1px);
+}
+/* Responsive adjustments for modal */
+@media (max-width: 768px) {
+    .modal-project-info {
+        grid-template-columns: 1fr; /* Stack on smaller screens */
+        gap: 1rem;
+    }
+    .modal-project-image {
+        font-size: 3rem;
+        max-width: 120px; /* Adjust size for mobile */
+        aspect-ratio: auto; /* Allow height to adjust */
+        height: 120px; /* Fixed height for consistency or use padding */
+        margin-bottom: 1rem;
+    }
+    .modal-links {
+        flex-direction: column; /* Stack buttons */
+    }
+    .modal-btn {
+        width: 100%; /* Make buttons full width */
+        justify-content: center; /* Center text/icon in button */
+    }
+    .modal-content h2 { /* Adjust title size on mobile */
+        font-size: var(--font-size-2xl);
+    }
+}
