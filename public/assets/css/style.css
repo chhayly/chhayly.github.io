@@ -1569,4 +1569,54 @@ textarea:focus {
 .global-theme-toggle{position:fixed;top:1rem;right:1rem;width:3rem;height:3rem;border-radius:50%;background-color:var(--bg-tertiary);color:var(--text-primary);border:none;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);cursor:pointer;transition:var(--transition);z-index:1200}
 .global-theme-toggle:hover{background-color:var(--primary-color);color:#fff}
 .resume-link a{color:var(--primary-color);font-weight:600;text-decoration:none}
-.resume-link a:hover{text-decoration:underline} 
+.resume-link a:hover{text-decoration:underline}
+/* Added CSS for Mobile Sidebar Toggle and Overlay */
+.sidebar-overlay {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 998; /* Below sidebar, above content */
+}
+
+.sidebar-overlay.active {
+  display: block;
+}
+
+.mobile-sidebar-toggle {
+  display: none; /* Hidden by default, shown via JS/CSS media query logic */
+  position: fixed;
+  top: 20px; /* Adjust as needed */
+  left: 20px; /* Adjust as needed */
+  z-index: 1001; /* Above overlay */
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  font-size: 1.2rem;
+  box-shadow: var(--shadow-md);
+}
+
+/* Sidebar active state for mobile (adjust if existing .sidebar.active needs override) */
+/* This is a more specific rule for the transform part if needed, or integrate with existing */
+@media (max-width: 1024px) {
+  .mobile-sidebar-toggle {
+    display: flex; /* Show on mobile */
+    align-items: center;
+    justify-content: center;
+  }
+  .sidebar { /* Default state for mobile, before 'active' class is added */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out; /* Ensure transition is defined */
+    z-index: 999; /* Ensure it's above the overlay */
+  }
+  .sidebar.active { /* State when sidebar should be visible on mobile */
+    transform: translateX(0);
+    box-shadow: 0 0 20px rgba(0,0,0,0.2); /* Example shadow */
+  }
+}
