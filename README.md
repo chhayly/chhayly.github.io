@@ -1,27 +1,63 @@
-# Next.js Static Export
+# Personal Portfolio – Next.js Static Export
 
-Next.js enables starting as a static site or Single-Page Application (SPA), then later optionally upgrading to use features that require a server.
+This is a personal portfolio website built with Next.js, statically exported for fast, serverless deployment. It features a modern design, responsive layout, and dynamic content management via JSON.
 
-When running `next build`, Next.js generates an HTML file per route. By breaking a strict SPA into individual HTML files, Next.js can avoid loading unnecessary JavaScript code on the client-side, reducing the bundle size and enabling faster page loads.
+## Features
 
-Learn more: https://nextjs.org/docs/app/building-your-application/deploying/static-exports
+- Built with Next.js App Router
+- Static export for fast, serverless hosting
+- Responsive design for desktop and mobile
+- Customizable content via `app/data/content.json`
+- Modern UI with CSS variables and theming
+- Sidebar navigation and mobile-friendly navbar
+- Project, skills, experience, and publication sections
+- Dark mode support
 
-## Deploy your own
+## Getting Started
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-static-export)
+1. **Install dependencies:**
 
-## How to use
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+2. **Run the development server:**
 
-```bash
-npx create-next-app --example with-static-export with-static-export-app
-```
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-```bash
-yarn create next-app --example with-static-export with-static-export-app
-```
+   Open [http://localhost:3000](http://localhost:3000) to view your site.
 
-```bash
-pnpm create next-app --example with-static-export with-static-export-app
-```
+3. **Build and export static site:**
+
+   ```bash
+   npm run build && npm run export
+   # or
+   yarn build && yarn export
+   ```
+
+   The static site will be output to the `out/` directory.
+
+## Deployment
+
+You can deploy the `out/` directory to any static hosting provider (Vercel, Netlify, GitHub Pages, etc.).
+
+## Customization
+
+- Update your content in `app/data/content.json`.
+- Modify styles in `public/css/style.css`.
+- Add or update images in `public/images/`.
+
+## Learn More
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Static Exports in Next.js](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)
+
+---
+
+© 2025 Your Name. All rights reserved.
