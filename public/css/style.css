@@ -21,7 +21,7 @@
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0,0,0,0.04); /* Adjusted shadow-lg */
     
     /* Layout */
-    --sidebar-width: 320px;
+    --sidebar-width: 360px; /* Changed from 320px */
     
     /* Typography */
     --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -240,14 +240,14 @@ body {
 }
 
 .profile-image {
-    width: 5rem;
-    height: 5rem;
+    width: 7rem; /* Changed from 5rem */
+    height: 7rem; /* Changed from 5rem */
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border-radius: var(--radius); /* Changed from 50% */
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto var(--spacing-3);
+    margin: 0 auto var(--spacing-4); /* Updated margin */
     box-shadow: var(--shadow-lg);
     transition: var(--transition);
     overflow: hidden; /* Added to prevent content overflow */
@@ -270,15 +270,15 @@ body {
 }
 
 .sidebar-profile h1 {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-2xl); /* Updated font-size */
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: var(--spacing-2);
+    margin-bottom: var(--spacing-3); /* Updated margin-bottom */
     line-height: 1.2;
 }
 
 .profile-subtitle {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base); /* Updated font-size */
     color: var(--primary-color);
     font-weight: 600;
     margin-bottom: var(--spacing-3);
