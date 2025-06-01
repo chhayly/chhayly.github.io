@@ -267,7 +267,7 @@ const HomePage = () => {
               <a href="https://github.com/chhayly" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <i className="fab fa-github"></i>
               </a>
-              <a href="mailto:chhayly@vt.edu" aria-label="Email">
+              <a href="mailto:chhayly.sreng@gmail.com" aria-label="Email">
                 <i className="fas fa-envelope"></i>
               </a>
             </div>

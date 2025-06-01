@@ -240,8 +240,8 @@ body {
 }
 
 .profile-image {
-    width: 7rem; /* Changed from 5rem */
-    height: 7rem; /* Changed from 5rem */
+    width: 14rem; /* Changed from 5rem */
+    height: 14rem; /* Changed from 5rem */
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     border-radius: var(--radius); /* Changed from 50% */
     display: flex;
