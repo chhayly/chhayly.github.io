@@ -207,7 +207,7 @@ const HomePage = () => {
             {publications.map((publication: Publication, index: number) => (
               <div key={index} className="publication-item" data-aos="fade-up">
                 <div className="publication-image-container">
-                  <img src={publication.image ? formatImagePath(publication.image) : "/assets/img/placeholder.png"} alt={publication.title} className="publication-image" />
+                  <img src={publication.image && publication.image.trim() !== '' ? formatImagePath(publication.image) : "/images/placeholders/item-placeholder.svg"} alt={publication.title} className="publication-image" />
                 </div>
                 <div className="publication-content">
                   <h3>{publication.title}</h3>
@@ -241,7 +241,7 @@ const HomePage = () => {
             {achievements.map((achievement: Achievement, index: number) => (
               <div key={index} className="achievement-card" data-aos="fade-up">
                 <div className="achievement-image-container">
-                  <img src={achievement.image ? formatImagePath(achievement.image) : "/assets/img/placeholder.png"} alt={achievement.title} className="achievement-image" />
+                  <img src={achievement.image && achievement.image.trim() !== '' ? formatImagePath(achievement.image) : "/images/placeholders/item-placeholder.svg"} alt={achievement.title} className="achievement-image" />
                 </div>
                 <div className="achievement-content">
                   <h3>{achievement.title}</h3>
@@ -267,7 +267,7 @@ const HomePage = () => {
               <a href="https://github.com/chhayly" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <i className="fab fa-github"></i>
               </a>
-              <a href="mailto:chhayly@vt.edu" aria-label="Email">
+              <a href="mailto:chhayly.sreng@gmail.com" aria-label="Email">
                 <i className="fas fa-envelope"></i>
               </a>
             </div>

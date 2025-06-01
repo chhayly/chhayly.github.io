@@ -63,8 +63,7 @@ export default function RootLayout({
                     {/* Profile Section */}
                     <div className="sidebar-profile">
                         <div className="profile-image">
-                            {/* Placeholder for image/icon, original was <i className="fas fa-user-circle"></i> */}
-                            <span style={{fontSize: '50px'}}> सीएस </span> {/* Simple text placeholder */}
+                            <img src="/images/profile_picture.png" alt="Profile Picture" />
                         </div>
                         <h1>Chhayly Sreng</h1>
                         <p className="profile-subtitle">AI-Focused Software Engineer, Data Scientist, and Researcher</p>
@@ -79,11 +78,11 @@ export default function RootLayout({
                         <div className="contact-info">
                             <div className="contact-item">
                                 {/* <i className="fas fa-envelope"></i> */}
-                                <span>📧</span> <a href="mailto:chhayly@vt.edu">chhayly@vt.edu</a>
+                                <span>📧</span> <a href="mailto:chhayly.sreng@gmail.com">chhayly.sreng@gmail.com</a>
                             </div>
                             <div className="contact-item">
                                 {/* <i className="fab fa-linkedin"></i> */}
-                                <span>🔗</span> <a href="https://linkedin.com/in/chhayly-sreng" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                                <span>🔗</span> <a href="https://www.linkedin.com/in/chhaylysreng/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                             </div>
                             <div className="contact-item">
                                 {/* <i className="fab fa-github"></i> */}

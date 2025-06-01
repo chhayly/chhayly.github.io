@@ -12,28 +12,28 @@
     --secondary-color: #6366f1;
     --accent-color: #10b981;
     --text-primary: #1f2937;
-    --text-secondary: #6b7280;
+    --text-secondary: #5A6470; /* Adjusted from #6b7280 */
     --bg-primary: #ffffff;
     --bg-secondary: #f9fafb;
     --bg-tertiary: #f3f4f6;
-    --border-color: #e5e7eb;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    --border-color: #DDE1E6; /* Adjusted from #e5e7eb */
+    --shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.08), 0 4px 5px 0 rgba(0,0,0,0.05); /* Adjusted shadow */
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0,0,0,0.04); /* Adjusted shadow-lg */
     
     /* Layout */
-    --sidebar-width: 320px;
+    --sidebar-width: 360px; /* Changed from 320px */
     
     /* Typography */
     --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-size-xs: 0.875rem;
-    --font-size-sm: 1rem;
-    --font-size-base: 1.125rem;
-    --font-size-lg: 1.25rem;
-    --font-size-xl: 1.5rem;
-    --font-size-2xl: 1.875rem;
-    --font-size-3xl: 2.25rem;
-    --font-size-4xl: 2.5rem;
-    --font-size-5xl: 3.5rem;
+    --font-size-xs: 0.875rem; /* 14px */
+    --font-size-sm: 1.0625rem; /* 17px */
+    --font-size-base: 1.1875rem; /* 19px */
+    --font-size-lg: 1.3125rem; /* 21px */
+    --font-size-xl: 1.5rem; /* 24px */
+    --font-size-2xl: 1.875rem; /* 30px */
+    --font-size-3xl: 2.25rem; /* 36px */
+    --font-size-4xl: 2.75rem; /* 44px */
+    --font-size-5xl: 3.5rem; /* 56px */
     
     /* Spacing */
     --spacing-1: 0.25rem;
@@ -66,13 +66,13 @@
     --secondary-color: #818cf8;
     --accent-color: #34d399;
     --text-primary: #f9fafb;
-    --text-secondary: #d1d5db;
+    --text-secondary: #D8DEE9; /* Adjusted from #d1d5db */
     --bg-primary: #111827;
     --bg-secondary: #1f2937;
     --bg-tertiary: #374151;
-    --border-color: #4b5563;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+    --border-color: #525E6E; /* Adjusted from #4b5563 */
+    --shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25), 0 4px 5px 0 rgba(0,0,0,0.2); /* Adjusted dark shadow */
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.25), 0 4px 6px -2px rgba(0,0,0,0.2); /* Adjusted dark shadow-lg */
 }
 /* --- End Dark Theme Variables (ThemeHandler.tsx) --- */
 
@@ -83,7 +83,7 @@ html {
 
 body {
     font-family: var(--font-family);
-    line-height: 1.6;
+    line-height: 1.7;
     color: var(--text-primary);
     background-color: var(--bg-primary);
     transition: var(--transition);
@@ -145,7 +145,7 @@ body {
 .nav-link {
     color: var(--text-primary);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 400;
     position: relative;
     transition: var(--transition);
 }
@@ -240,20 +240,28 @@ body {
 }
 
 .profile-image {
-    width: 5rem;
-    height: 5rem;
+    width: 14rem; /* Changed from 5rem */
+    height: 14rem; /* Changed from 5rem */
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: 50%;
+    border-radius: var(--radius); /* Changed from 50% */
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto var(--spacing-3);
+    margin: 0 auto var(--spacing-4); /* Updated margin */
     box-shadow: var(--shadow-lg);
     transition: var(--transition);
+    overflow: hidden; /* Added to prevent content overflow */
 }
 
 .profile-image:hover {
     transform: scale(1.05);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius); /* Match parent container's new border radius */
 }
 
 .profile-image i {
@@ -262,15 +270,15 @@ body {
 }
 
 .sidebar-profile h1 {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-2xl); /* Updated font-size */
     font-weight: 700;
     color: var(--text-primary);
-    margin-bottom: var(--spacing-2);
+    margin-bottom: var(--spacing-3); /* Updated margin-bottom */
     line-height: 1.2;
 }
 
 .profile-subtitle {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-base); /* Updated font-size */
     color: var(--primary-color);
     font-weight: 600;
     margin-bottom: var(--spacing-3);
@@ -414,7 +422,7 @@ body {
     display: flex;
     align-items: center;
     gap: var(--spacing-2);
-    padding: var(--spacing-2) var(--spacing-3);
+    padding: 0.625rem var(--spacing-3); /* 10px 12px */
     color: var(--text-secondary);
     text-decoration: none;
     border-radius: var(--radius);
@@ -540,15 +548,15 @@ body {
 
 /* Section Styles */
 section {
-    padding: var(--spacing-20) 0;
+    padding: var(--spacing-16) 0; /* Reduced from --spacing-20 */
     min-height: 80vh;
 }
 
 .section-title {
-    font-size: var(--font-size-4xl);
+    font-size: var(--font-size-4xl); /* Adjusted if necessary, using 2.75rem from root */
     font-weight: 700;
     text-align: center;
-    margin-bottom: var(--spacing-16);
+    margin-bottom: var(--spacing-12); /* Reduced from --spacing-16 */
     color: var(--text-primary);
     position: relative;
 }
@@ -713,7 +721,7 @@ section {
 .skills-category h3 {
     font-size: var(--font-size-xl);
     color: var(--text-primary);
-    margin-bottom: var(--spacing-6);
+    margin-bottom: var(--spacing-4); /* Reduced from --spacing-6 */
     display: flex;
     align-items: center;
     gap: var(--spacing-3);
@@ -1352,6 +1360,7 @@ section {
         transition: left 0.3s ease;
         border-top: 1px solid var(--border-color);
         z-index: 1000;
+        gap: var(--spacing-4); /* Adjusted from spacing-6 for vertical layout */
     }
 
     .nav-menu.active {

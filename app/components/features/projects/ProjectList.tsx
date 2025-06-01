@@ -82,7 +82,7 @@ export default function ProjectList({ projects }: ProjectListProps) {
               data-category={project.category.join(' ')}
             >
               <div className="project-image-container">
-                <img src={formatImagePath(project.image)} alt={project.title} className="project-image" />
+                <img src={project.image && project.image.trim() !== '' ? formatImagePath(project.image) : "/images/placeholders/item-placeholder.svg"} alt={project.title} className="project-image" />
               </div>
               <div className="project-content">
                 <h3>{project.title}</h3>
