@@ -250,6 +250,7 @@ body {
     margin: 0 auto var(--spacing-3);
     box-shadow: var(--shadow-lg);
     transition: var(--transition);
+    overflow: hidden; /* Added to prevent content overflow */
 }
 
 .profile-image:hover {
