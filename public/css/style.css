@@ -243,7 +243,7 @@ body {
     width: 5rem;
     height: 5rem;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    border-radius: 50%;
+    border-radius: var(--radius); /* Changed from 50% */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -255,6 +255,13 @@ body {
 
 .profile-image:hover {
     transform: scale(1.05);
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius); /* Match parent container's new border radius */
 }
 
 .profile-image i {
