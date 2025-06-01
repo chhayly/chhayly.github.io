@@ -1,22 +1,10 @@
 // app/page.tsx
 import React from 'react';
 import contentData from './data/content.json'; // Import the data
-import ProjectList from './components/ProjectList'; // Import the new client component
+import ProjectList from './components/features/projects/ProjectList'; // Import the new client component
 
 // Define interfaces based on content.json structure
-// Project interface can be removed if ProjectList defines its own or imports from shared types
-// interface Project {
-//   id: string;
-//   title: string;
-//   image: string;
-//   description: string;
-//   tech: string[];
-//   category: string[]; // Make sure this matches JSON
-//   github: string | null;
-//   demo: string | null;
-//   features?: string[]; // Optional
-//   icon?: string; // Optional
-// }
+// Project interface has been moved to app/types.ts and is used by ProjectList.tsx
 
 interface Publication {
   title: string;

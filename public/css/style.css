@@ -58,6 +58,7 @@
     --transition-fast: all 0.15s ease;
 }
 
+/* --- Dark Theme Variables (ThemeHandler.tsx) --- */
 /* Dark theme */
 [data-theme="dark"] {
     --primary-color: #60a5fa;
@@ -73,6 +74,7 @@
     --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
     --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
 }
+/* --- End Dark Theme Variables (ThemeHandler.tsx) --- */
 
 html {
     scroll-behavior: smooth;
@@ -95,6 +97,7 @@ body {
     padding: 0 var(--spacing-6);
 }
 
+/* --- Mobile Navigation (NavigationClient.tsx) --- */
 /* Mobile Navigation */
 .mobile-navbar {
     position: fixed;
@@ -180,6 +183,7 @@ body {
     margin: 2px 0;
     transition: var(--transition);
 }
+/* --- End Mobile Navigation (NavigationClient.tsx) --- */
 
 /* ----- Layout Container ----- */
 .layout {
@@ -187,6 +191,7 @@ body {
     min-height: 100vh;
 }
 
+/* --- Desktop Sidebar Navigation (NavigationClient.tsx) --- */
 /* ----- Sidebar (Desktop) ----- */
 .sidebar {
     position: sticky; /* stays in view while page scrolls */
@@ -448,7 +453,9 @@ body {
     text-align: center;
     flex-shrink: 0;
 }
+/* --- End Desktop Sidebar Navigation (NavigationClient.tsx) --- */
 
+/* --- Theme Toggle Buttons (ThemeHandler.tsx) --- */
 /* Sidebar Theme Toggle */
 .sidebar-theme-toggle {
     padding-top: var(--spacing-3);
@@ -482,6 +489,7 @@ body {
     text-align: center;
     flex-shrink: 0;
 }
+/* --- End Theme Toggle Buttons (ThemeHandler.tsx) --- */
 
 /* Sidebar Footer */
 .sidebar-footer {
@@ -848,6 +856,7 @@ section {
     font-weight: 500;
 }
 
+/* --- Project List & Filters (ProjectList.tsx) --- */
 /* Projects Section */
 .project-filters {
     display: flex;
@@ -977,6 +986,7 @@ section {
 }
 
 .project-image{width:100%;max-height:200px;object-fit:cover;border-radius:var(--radius);margin-bottom:var(--spacing-4)}
+/* --- End Project List & Filters (ProjectList.tsx) --- */
 
 /* Publications Section */
 .publications {
@@ -1192,6 +1202,7 @@ section {
     color: white;
 }
 
+/* --- Modal Styles (ProjectList.tsx primarily, but generic) --- */
 /* Modal Styles */
 .modal {
     display: none;
@@ -1251,6 +1262,7 @@ section {
     from { transform: translateY(-50px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
+/* --- End Modal Styles --- */
 
 /* ----- Progress Bar (Desktop) ----- */
 .scroll-progress {
@@ -1302,6 +1314,7 @@ section {
         min-height: 70vh;
     }
     
+    /* --- Mobile Navigation & Sidebar Media Queries (NavigationClient.tsx) --- */
     /* Overlay for mobile sidebar */
     .sidebar-overlay {
         position: fixed;
@@ -1321,8 +1334,10 @@ section {
         visibility: visible;
     }
 }
+/* --- End Mobile Navigation & Sidebar Media Queries (NavigationClient.tsx) --- */
 
 @media (max-width: 768px) {
+    /* --- Mobile Navigation Menu - Flyout (NavigationClient.tsx) --- */
     .nav-menu {
         position: fixed;
         top: 4rem;
@@ -1358,6 +1373,7 @@ section {
     .mobile-nav-toggle.active .bar:nth-child(3) {
         transform: translateY(-6px) rotate(-45deg);
     }
+    /* --- End Mobile Navigation Menu - Flyout (NavigationClient.tsx) --- */
 
     .about-content {
         grid-template-columns: 1fr;
@@ -1566,10 +1582,13 @@ textarea:focus {
 
 .about-skills{margin-top:var(--spacing-12)}
 
+/* --- Global Theme Toggle (ThemeHandler.tsx) --- */
 .global-theme-toggle{position:fixed;top:1rem;right:1rem;width:3rem;height:3rem;border-radius:50%;background-color:var(--bg-tertiary);color:var(--text-primary);border:none;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);cursor:pointer;transition:var(--transition);z-index:1200}
 .global-theme-toggle:hover{background-color:var(--primary-color);color:#fff}
+/* --- End Global Theme Toggle (ThemeHandler.tsx) --- */
 .resume-link a{color:var(--primary-color);font-weight:600;text-decoration:none}
 .resume-link a:hover{text-decoration:underline}
+/* --- Mobile Sidebar Toggle & Overlay (NavigationClient.tsx) --- */
 /* Added CSS for Mobile Sidebar Toggle and Overlay */
 .sidebar-overlay {
   display: none; /* Hidden by default */
@@ -1620,7 +1639,9 @@ textarea:focus {
     box-shadow: 0 0 20px rgba(0,0,0,0.2); /* Example shadow */
   }
 }
+/* --- End Mobile Sidebar Toggle & Overlay (NavigationClient.tsx) --- */
 
+/* --- Project Modal Content (ProjectList.tsx) --- */
 /* Added/Ensured CSS for Project Modal Content */
 .modal.active { /* Ensure this is how modal becomes visible if not already defined properly */
     display: flex;
@@ -1744,3 +1765,4 @@ textarea:focus {
         font-size: var(--font-size-2xl);
     }
 }
+/* --- End Project Modal Content (ProjectList.tsx) --- */

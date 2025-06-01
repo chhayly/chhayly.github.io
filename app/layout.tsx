@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link'; // Import Link if you use it for Next.js internal navigation later
-import AOSInitializer from './components/AOSInitializer';
-import NavigationClient from './components/NavigationClient';
-import ThemeHandler from './components/ThemeHandler';
+import AOSInitializer from './components/utils/AOSInitializer';
+import NavigationClient from './components/ui/NavigationClient';
+import ThemeHandler from './components/ui/ThemeHandler';
 
 export const metadata: Metadata = {
   title: 'Chhayly Sreng - AI Researcher & Software Engineer',
   description: 'Personal portfolio of Chhayly Sreng - AI Researcher, Software Engineer, and Graduate Student at Virginia Tech',
   icons: {
-    icon: '/assets/img/favicon.ico', // Adjusted path for public directory
+    icon: '/images/favicon.ico', // Adjusted path for public directory
   },
 };
 
@@ -23,7 +23,7 @@ export default function RootLayout({
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="/css/style.css" />
       </head>
       <body>
         <AOSInitializer />
@@ -91,7 +91,7 @@ export default function RootLayout({
                             </div>
                             <div className="contact-item resume-link">
                                 {/* <i className="fas fa-file"></i> */}
-                                <span>📄</span> <a href="/assets/files/resume.pdf" target="_blank" rel="noopener noreferrer">Download CV</a> {/* Path adjusted for public folder */}
+                                <span>📄</span> <a href="/documents/resume.pdf" target="_blank" rel="noopener noreferrer">Download CV</a> {/* Path adjusted for public folder */}
                             </div>
                         </div>
                     </div>
