@@ -63,8 +63,7 @@ export default function RootLayout({
                     {/* Profile Section */}
                     <div className="sidebar-profile">
                         <div className="profile-image">
-                            {/* Placeholder for image/icon, original was <i className="fas fa-user-circle"></i> */}
-                            <span style={{fontSize: '50px'}}> सीएस </span> {/* Simple text placeholder */}
+                            <img src="/images/placeholders/profile-placeholder.svg" alt="Profile Picture" />
                         </div>
                         <h1>Chhayly Sreng</h1>
                         <p className="profile-subtitle">AI-Focused Software Engineer, Data Scientist, and Researcher</p>
