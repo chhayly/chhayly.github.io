@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 export default function Home() {
   return (
+    <main>
     <section className="home-intro">
       <div className="container">
         <div className="about-profile">
@@ -39,5 +40,6 @@ export default function Home() {
         </div>
       </div>
     </section>
+    </main>
   );
 }
