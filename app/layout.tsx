@@ -25,7 +25,7 @@ export default function RootLayout({
           <div className="header-container">
             <Link href="/" className="logo">CS</Link>
             <nav className="site-nav">
-              <Link href="/about">About</Link>
+              <Link href="/#about">About</Link>
               <Link href="/experience">Experience</Link>
               <Link href="/education">Education</Link>
               <Link href="/projects">Projects</Link>
