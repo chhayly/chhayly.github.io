@@ -2,6 +2,7 @@
 import React from 'react';
 import contentData from './data/content.json'; // Import the data
 import ProjectList from './components/features/projects/ProjectList'; // Import the new client component
+import ContactForm from './components/features/contact/ContactForm';
 
 // Define interfaces based on content.json structure
 // Project interface has been moved to app/types.ts and is used by ProjectList.tsx
@@ -230,6 +231,14 @@ const HomePage = () => {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="contact">
+        <div className="container">
+          <h2 className="section-title" data-aos="fade-up">Get in Touch</h2>
+          <ContactForm />
         </div>
       </section>
 
