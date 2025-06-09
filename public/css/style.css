@@ -882,7 +882,7 @@ section {
     border-radius: var(--radius);
     cursor: pointer;
     font-weight: 500;
-    transition: var(--transition);
+    transition: var(--transition-fast);
 }
 
 .filter-btn:hover,
@@ -903,7 +903,7 @@ section {
     box-shadow: var(--shadow);
     margin-bottom: var(--spacing-6);
     padding: var(--spacing-6);
-    transition: var(--transition);
+    transition: var(--transition-fast);
     opacity: 1;
 }
 
