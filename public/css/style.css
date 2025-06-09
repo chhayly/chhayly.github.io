@@ -55,7 +55,7 @@
     
     /* Transitions */
     --transition: all 0.3s ease;
-    --transition-fast: all 0.15s ease;
+    --transition-fast: all 0.1s ease;
 }
 
 /* --- Dark Theme Variables (ThemeHandler.tsx) --- */

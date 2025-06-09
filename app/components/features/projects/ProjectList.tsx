@@ -57,7 +57,7 @@ export default function ProjectList({ projects }: ProjectListProps) {
   return (
     <>
       {/* Project Filters */}
-      <div className="project-filters" data-aos="fade-up">
+      <div className="project-filters">
             {filterCategories.map(filter => (
               <button
                 key={filter}
@@ -78,7 +78,6 @@ export default function ProjectList({ projects }: ProjectListProps) {
             <div
               key={project.id}
               className={`project-item featured ${!isVisible ? 'hidden' : ''}`}
-              data-aos="fade-up"
               data-category={project.category.join(' ')}
             >
               <div className="project-image-container">
