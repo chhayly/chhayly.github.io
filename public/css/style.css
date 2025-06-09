@@ -7,24 +7,24 @@
 
 :root {
     /* Light theme colors */
-    --primary-color: #3b82f6;
-    --primary-dark: #2563eb;
-    --secondary-color: #6366f1;
-    --accent-color: #10b981;
-    --text-primary: #1f2937;
-    --text-secondary: #5A6470; /* Adjusted from #6b7280 */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f9fafb;
-    --bg-tertiary: #f3f4f6;
-    --border-color: #DDE1E6; /* Adjusted from #e5e7eb */
-    --shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.08), 0 4px 5px 0 rgba(0,0,0,0.05); /* Adjusted shadow */
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0,0,0,0.04); /* Adjusted shadow-lg */
+    --primary-color: #000;
+    --primary-dark: #000;
+    --secondary-color: #666;
+    --accent-color: #000;
+    --text-primary: #000;
+    --text-secondary: #444;
+    --bg-primary: #fff;
+    --bg-secondary: #f6f6f6;
+    --bg-tertiary: #efefef;
+    --border-color: #ddd;
+    --shadow: none;
+    --shadow-lg: none;
     
     /* Layout */
     --sidebar-width: 360px; /* Changed from 320px */
     
     /* Typography */
-    --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-family: 'Helvetica Neue', Arial, sans-serif;
     --font-size-xs: 0.875rem; /* 14px */
     --font-size-sm: 1.0625rem; /* 17px */
     --font-size-base: 1.1875rem; /* 19px */
@@ -61,18 +61,18 @@
 /* --- Dark Theme Variables (ThemeHandler.tsx) --- */
 /* Dark theme */
 [data-theme="dark"] {
-    --primary-color: #60a5fa;
-    --primary-dark: #3b82f6;
-    --secondary-color: #818cf8;
-    --accent-color: #34d399;
-    --text-primary: #f9fafb;
-    --text-secondary: #D8DEE9; /* Adjusted from #d1d5db */
-    --bg-primary: #111827;
-    --bg-secondary: #1f2937;
-    --bg-tertiary: #374151;
-    --border-color: #525E6E; /* Adjusted from #4b5563 */
-    --shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25), 0 4px 5px 0 rgba(0,0,0,0.2); /* Adjusted dark shadow */
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.25), 0 4px 6px -2px rgba(0,0,0,0.2); /* Adjusted dark shadow-lg */
+    --primary-color: #fff;
+    --primary-dark: #eee;
+    --secondary-color: #ccc;
+    --accent-color: #fff;
+    --text-primary: #fff;
+    --text-secondary: #aaa;
+    --bg-primary: #111;
+    --bg-secondary: #222;
+    --bg-tertiary: #333;
+    --border-color: #444;
+    --shadow: none;
+    --shadow-lg: none;
 }
 /* --- End Dark Theme Variables (ThemeHandler.tsx) --- */
 
@@ -242,7 +242,7 @@ body {
 .profile-image {
     width: 14rem; /* Changed from 5rem */
     height: 14rem; /* Changed from 5rem */
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--bg-secondary);
     border-radius: var(--radius); /* Changed from 50% */
     display: flex;
     align-items: center;
@@ -568,9 +568,8 @@ section {
     left: 50%;
     transform: translateX(-50%);
     width: 4rem;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    border-radius: var(--radius);
+    height: 2px;
+    background: var(--primary-color);
 }
 
 /* About Section */
@@ -634,7 +633,7 @@ section {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
 }
 
 .education-item {
@@ -772,7 +771,7 @@ section {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
 }
 
 .timeline-item {
@@ -928,12 +927,12 @@ section {
 .project-icon {
     width: 5rem;
     height: 5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
     border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--bg-primary);
     font-size: 2rem;
     flex-shrink: 0;
     margin-right: var(--spacing-6);
@@ -1027,12 +1026,12 @@ section {
 .publication-icon {
     width: 4rem;
     height: 4rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
     border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--bg-primary);
     font-size: 1.5rem;
     flex-shrink: 0;
     margin-right: var(--spacing-6);
@@ -1130,12 +1129,12 @@ section {
 .achievement-icon {
     width: 4rem;
     height: 4rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--bg-primary);
     font-size: var(--font-size-xl);
     flex-shrink: 0;
 }
@@ -1283,9 +1282,9 @@ section {
     position: fixed;
     top: 0;
     left: 0;
-    height: 4px;
+    height: 2px;
     width: 0;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
     z-index: 1500;
     transition: width 0.2s ease;
 }
@@ -1709,7 +1708,7 @@ textarea:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
     border-radius: var(--radius-xl); /* Or 1rem */
     color: white;
     font-size: 4rem; /* Or as needed */
