@@ -50,6 +50,7 @@ export default function RootLayout({
                     <a href="#projects" className="nav-link">Projects</a>
                     <a href="#publications" className="nav-link">Publications</a>
                     <a href="#achievements" className="nav-link">Achievements</a>
+                    <a href="#contact" className="nav-link">Contact</a>
                 </div>
                 <div className="mobile-nav-toggle" id="mobile-nav-toggle">
                     <span className="bar"></span>
@@ -118,6 +119,9 @@ export default function RootLayout({
                             </a></li>
                             <li><a href="#achievements" className="sidebar-link" data-section="achievements">
                                 {/* <i className="fas fa-trophy"></i> */} <span>🏆</span> Achievements
+                            </a></li>
+                            <li><a href="#contact" className="sidebar-link" data-section="contact">
+                                {/* <i className="fas fa-envelope"></i> */} <span>✉️</span> Contact
                             </a></li>
                         </ul>
                     </nav>
