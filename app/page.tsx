@@ -65,29 +65,6 @@ const HomePage = () => {
                   <i className="fas fa-quote-right"></i>
                 </p>
               </div>
-              {/* Skills list under about description */}
-              <div className="skills-grid about-skills">
-                <div className="skills-group">
-                  <h4>Programming Languages</h4>
-                  <p className="skill-line">Python · JavaScript · TypeScript · C# · C++ · Java · SQL</p>
-                </div>
-                <div className="skills-group">
-                  <h4>AI & Data</h4>
-                  <p className="skill-line">TensorFlow · PyTorch · OpenCV · scikit-learn · Pandas · NumPy · Librosa</p>
-                </div>
-                <div className="skills-group">
-                  <h4>DevOps & Tools</h4>
-                  <p className="skill-line">Docker · Git · CI/CD · Redis · React · Node.js · Django · Flask</p>
-                </div>
-                <div className="skills-group">
-                  <h4>Cloud & Databases</h4>
-                  <p className="skill-line">AWS · PostgreSQL · MongoDB · MySQL · Firebase</p>
-                </div>
-                <div className="skills-group">
-                  <h4>Electronics & IoT</h4>
-                  <p className="skill-line">Arduino · PLC · NodeMCU · Embedded Systems · IoT Protocols</p>
-                </div>
-              </div>
             </div>
             {/* Professional Experience on the right (mini-timeline) */}
             <div id="experience" className="experience-right" data-aos="fade-left">
@@ -138,6 +115,35 @@ const HomePage = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+        </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="skills">
+        <div className="container">
+          <h2 className="section-title" data-aos="fade-up">Skills</h2>
+          <div className="skills-grid about-skills">
+            <div className="skills-group">
+              <h4>Programming Languages</h4>
+              <p className="skill-line">Python · JavaScript · TypeScript · C# · C++ · Java · SQL</p>
+            </div>
+            <div className="skills-group">
+              <h4>AI & Data</h4>
+              <p className="skill-line">TensorFlow · PyTorch · OpenCV · scikit-learn · Pandas · NumPy · Librosa</p>
+            </div>
+            <div className="skills-group">
+              <h4>DevOps & Tools</h4>
+              <p className="skill-line">Docker · Git · CI/CD · Redis · React · Node.js · Django · Flask</p>
+            </div>
+            <div className="skills-group">
+              <h4>Cloud & Databases</h4>
+              <p className="skill-line">AWS · PostgreSQL · MongoDB · MySQL · Firebase</p>
+            </div>
+            <div className="skills-group">
+              <h4>Electronics & IoT</h4>
+              <p className="skill-line">Arduino · PLC · NodeMCU · Embedded Systems · IoT Protocols</p>
             </div>
           </div>
         </div>
