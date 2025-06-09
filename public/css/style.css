@@ -1406,6 +1406,15 @@ section {
         grid-template-columns: 1fr;
     }
 
+    .intro-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .intro-text {
+        text-align: center;
+    }
+
     .timeline {
         margin-left: var(--spacing-4);
     }
@@ -1867,8 +1876,20 @@ textarea:focus {
 
 /* --- Home Intro Section --- */
 .home-intro {
-    text-align: center;
-    padding: var(--spacing-12) 0;
+    padding: var(--spacing-16) 0;
+}
+
+.intro-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-8);
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.intro-text {
+    text-align: left;
 }
 
 .home-message {
@@ -1876,10 +1897,9 @@ textarea:focus {
     color: var(--text-secondary);
 }
 
-.home-cta {
-    display: inline-block;
-    margin-top: var(--spacing-4);
-    color: var(--primary-color);
-    text-decoration: underline;
+.intro-profile .profile-image {
+    width: 10rem;
+    height: 10rem;
+    margin: 0;
 }
 /* --- End Home Intro Section --- */
