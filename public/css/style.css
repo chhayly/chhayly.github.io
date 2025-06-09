@@ -1272,10 +1272,16 @@ section {
 }
 /* --- End Modal Styles --- */
 
-/* ----- Progress Bar (Desktop) ----- */
+/* ----- Progress Bar ----- */
 .scroll-progress {
-    left: 0; /* full width on desktop */
-    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    z-index: 1500;
+    transition: width 0.2s ease;
 }
 
 /* ----- Mobile & Tablet (<=1024px) ----- */
@@ -1595,6 +1601,34 @@ textarea:focus {
 .global-theme-toggle{position:fixed;top:1rem;right:1rem;width:3rem;height:3rem;border-radius:50%;background-color:var(--bg-tertiary);color:var(--text-primary);border:none;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);cursor:pointer;transition:var(--transition);z-index:1200}
 .global-theme-toggle:hover{background-color:var(--primary-color);color:#fff}
 /* --- End Global Theme Toggle (ThemeHandler.tsx) --- */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 1100;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
 .resume-link a{color:var(--primary-color);font-weight:600;text-decoration:none}
 .resume-link a:hover{text-decoration:underline}
 /* --- Mobile Sidebar Toggle & Overlay (NavigationClient.tsx) --- */
