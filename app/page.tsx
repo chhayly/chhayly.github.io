@@ -49,6 +49,13 @@ const HomePage = () => {
           <h2 className="section-title" data-aos="fade-up">About Me</h2>
           <div className="about-content">
             <div className="about-left" data-aos="fade-right">
+              <div className="about-profile">
+                <div className="profile-image">
+                  <img src="/images/profile_picture.png" alt="Chhayly Sreng" />
+                </div>
+                <h1 className="profile-name">Chhayly Sreng</h1>
+                <p className="profile-subtitle">AI Researcher &amp; Software Engineer</p>
+              </div>
               <div className="about-text">
                 <p>
                   I am a passionate software engineer and AI researcher with a strong background in computer science and engineering.
@@ -64,29 +71,6 @@ const HomePage = () => {
                   "Building intelligent systems for a smarter, more sustainable world."
                   <i className="fas fa-quote-right"></i>
                 </p>
-              </div>
-              {/* Skills list under about description */}
-              <div className="skills-grid about-skills">
-                <div className="skills-group">
-                  <h4>Programming Languages</h4>
-                  <p className="skill-line">Python · JavaScript · TypeScript · C# · C++ · Java · SQL</p>
-                </div>
-                <div className="skills-group">
-                  <h4>AI & Data</h4>
-                  <p className="skill-line">TensorFlow · PyTorch · OpenCV · scikit-learn · Pandas · NumPy · Librosa</p>
-                </div>
-                <div className="skills-group">
-                  <h4>DevOps & Tools</h4>
-                  <p className="skill-line">Docker · Git · CI/CD · Redis · React · Node.js · Django · Flask</p>
-                </div>
-                <div className="skills-group">
-                  <h4>Cloud & Databases</h4>
-                  <p className="skill-line">AWS · PostgreSQL · MongoDB · MySQL · Firebase</p>
-                </div>
-                <div className="skills-group">
-                  <h4>Electronics & IoT</h4>
-                  <p className="skill-line">Arduino · PLC · NodeMCU · Embedded Systems · IoT Protocols</p>
-                </div>
               </div>
             </div>
             {/* Professional Experience on the right (mini-timeline) */}
@@ -138,6 +122,35 @@ const HomePage = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" className="skills">
+        <div className="container">
+          <h2 className="section-title" data-aos="fade-up">Skills</h2>
+          <div className="skills-grid">
+            <div className="skills-group">
+              <h4>Programming Languages</h4>
+              <p className="skill-line">Python · JavaScript · TypeScript · C# · C++ · Java · SQL</p>
+            </div>
+            <div className="skills-group">
+              <h4>AI &amp; Data</h4>
+              <p className="skill-line">TensorFlow · PyTorch · OpenCV · scikit-learn · Pandas · NumPy · Librosa</p>
+            </div>
+            <div className="skills-group">
+              <h4>DevOps &amp; Tools</h4>
+              <p className="skill-line">Docker · Git · CI/CD · Redis · React · Node.js · Django · Flask</p>
+            </div>
+            <div className="skills-group">
+              <h4>Cloud &amp; Databases</h4>
+              <p className="skill-line">AWS · PostgreSQL · MongoDB · MySQL · Firebase</p>
+            </div>
+            <div className="skills-group">
+              <h4>Electronics &amp; IoT</h4>
+              <p className="skill-line">Arduino · PLC · NodeMCU · Embedded Systems · IoT Protocols</p>
             </div>
           </div>
         </div>
