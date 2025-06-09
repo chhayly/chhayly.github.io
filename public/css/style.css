@@ -907,11 +907,6 @@ section {
     opacity: 1;
 }
 
-.project-item.hidden {
-    opacity: 0;
-    transform: scale(0.8);
-    pointer-events: none;
-}
 
 .project-item:hover {
     transform: translateY(-2px);

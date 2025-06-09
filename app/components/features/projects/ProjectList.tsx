@@ -1,7 +1,7 @@
 // app/components/ProjectList.tsx
 'use client';
 
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import type { Project } from '../../../types';
 
 interface ProjectListProps {
@@ -54,6 +54,14 @@ export default function ProjectList({ projects }: ProjectListProps) {
 
   const filterCategories = ['all', 'ai', 'backend', 'research', 'iot'];
 
+  const filteredProjects = useMemo(
+    () =>
+      projects.filter(
+        project => activeFilter === 'all' || project.category.includes(activeFilter)
+      ),
+    [projects, activeFilter]
+  );
+
   return (
     <>
       {/* Project Filters */}
@@ -72,12 +80,11 @@ export default function ProjectList({ projects }: ProjectListProps) {
 
       {/* Projects List */}
       <div className="projects-list">
-        {projects.map((project: Project) => {
-          const isVisible = activeFilter === 'all' || project.category.includes(activeFilter);
+        {filteredProjects.map((project: Project) => {
           return (
             <div
               key={project.id}
-              className={`project-item featured ${!isVisible ? 'hidden' : ''}`}
+              className="project-item featured"
               data-category={project.category.join(' ')}
             >
               <div className="project-image-container">
