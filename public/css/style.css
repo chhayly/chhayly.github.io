@@ -1864,3 +1864,22 @@ textarea:focus {
     padding: var(--spacing-6);
 }
 /* --- End Minimal Header and Layout --- */
+
+/* --- Home Intro Section --- */
+.home-intro {
+    text-align: center;
+    padding: var(--spacing-12) 0;
+}
+
+.home-message {
+    margin: var(--spacing-6) 0;
+    color: var(--text-secondary);
+}
+
+.home-cta {
+    display: inline-block;
+    margin-top: var(--spacing-4);
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+/* --- End Home Intro Section --- */
