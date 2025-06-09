@@ -1814,3 +1814,52 @@ textarea:focus {
     }
 }
 /* --- End Project Modal Content (ProjectList.tsx) --- */
+
+/* --- Minimal Header and Layout --- */
+.site-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-3) 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.site-nav {
+    display: flex;
+    gap: var(--spacing-4);
+}
+
+.site-nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    transition: var(--transition-fast);
+}
+
+.site-nav a:hover {
+    color: var(--primary-color);
+}
+
+.site-main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: var(--spacing-6);
+}
+/* --- End Minimal Header and Layout --- */
