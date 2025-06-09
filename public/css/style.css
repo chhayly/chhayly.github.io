@@ -620,7 +620,8 @@ section {
 
 /* Education Section */
 .education {
-    background-color: var(--bg-primary);
+    background-color: var(--bg-secondary);
+    min-height: auto;
 }
 
 .education-timeline {
@@ -700,7 +701,7 @@ section {
 
 /* Skills Section */
 .skills {
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
     min-height: 90vh;
 }
 
@@ -872,7 +873,7 @@ section {
 /* --- Project List & Filters (ProjectList.tsx) --- */
 /* Projects Section */
 .projects {
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
 }
 .project-filters {
     display: flex;
@@ -1001,7 +1002,7 @@ section {
 
 /* Publications Section */
 .publications {
-    background-color: var(--bg-primary);
+    background-color: var(--bg-secondary);
 }
 
 .publications-list {
@@ -1100,7 +1101,7 @@ section {
 
 /* Achievements List View */
 .achievements {
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
 }
 .achievements-list {
     max-width: 900px;
