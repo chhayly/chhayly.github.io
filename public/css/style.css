@@ -55,7 +55,7 @@
     
     /* Transitions */
     --transition: all 0.3s ease;
-    --transition-fast: all 0.15s ease;
+    --transition-fast: all 0.1s ease;
 }
 
 /* --- Dark Theme Variables (ThemeHandler.tsx) --- */
@@ -618,6 +618,11 @@ section {
     margin-bottom: var(--spacing-6);
 }
 
+/* Education Section */
+.education {
+    background-color: var(--bg-primary);
+}
+
 .education-timeline {
     position: relative;
 }
@@ -866,6 +871,9 @@ section {
 
 /* --- Project List & Filters (ProjectList.tsx) --- */
 /* Projects Section */
+.projects {
+    background-color: var(--bg-secondary);
+}
 .project-filters {
     display: flex;
     justify-content: center;
@@ -882,7 +890,7 @@ section {
     border-radius: var(--radius);
     cursor: pointer;
     font-weight: 500;
-    transition: var(--transition);
+    transition: var(--transition-fast);
 }
 
 .filter-btn:hover,
@@ -903,15 +911,10 @@ section {
     box-shadow: var(--shadow);
     margin-bottom: var(--spacing-6);
     padding: var(--spacing-6);
-    transition: var(--transition);
+    transition: var(--transition-fast);
     opacity: 1;
 }
 
-.project-item.hidden {
-    opacity: 0;
-    transform: scale(0.8);
-    pointer-events: none;
-}
 
 .project-item:hover {
     transform: translateY(-2px);
@@ -998,7 +1001,7 @@ section {
 
 /* Publications Section */
 .publications {
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
 }
 
 .publications-list {
@@ -1096,6 +1099,9 @@ section {
 }
 
 /* Achievements List View */
+.achievements {
+    background-color: var(--bg-secondary);
+}
 .achievements-list {
     max-width: 900px;
     margin: 0 auto;
@@ -1272,10 +1278,16 @@ section {
 }
 /* --- End Modal Styles --- */
 
-/* ----- Progress Bar (Desktop) ----- */
+/* ----- Progress Bar ----- */
 .scroll-progress {
-    left: 0; /* full width on desktop */
-    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    width: 0;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    z-index: 1500;
+    transition: width 0.2s ease;
 }
 
 /* ----- Mobile & Tablet (<=1024px) ----- */
@@ -1595,6 +1607,34 @@ textarea:focus {
 .global-theme-toggle{position:fixed;top:1rem;right:1rem;width:3rem;height:3rem;border-radius:50%;background-color:var(--bg-tertiary);color:var(--text-primary);border:none;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);cursor:pointer;transition:var(--transition);z-index:1200}
 .global-theme-toggle:hover{background-color:var(--primary-color);color:#fff}
 /* --- End Global Theme Toggle (ThemeHandler.tsx) --- */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 1100;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+}
 .resume-link a{color:var(--primary-color);font-weight:600;text-decoration:none}
 .resume-link a:hover{text-decoration:underline}
 /* --- Mobile Sidebar Toggle & Overlay (NavigationClient.tsx) --- */

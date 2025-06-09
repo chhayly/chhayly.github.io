@@ -3,6 +3,8 @@ import Link from 'next/link'; // Import Link if you use it for Next.js internal 
 import AOSInitializer from './components/utils/AOSInitializer';
 import NavigationClient from './components/ui/NavigationClient';
 import ThemeHandler from './components/ui/ThemeHandler';
+import ScrollProgress from './components/ui/ScrollProgress';
+import BackToTopButton from './components/ui/BackToTopButton';
 
 export const metadata: Metadata = {
   title: 'Chhayly Sreng - AI Researcher & Software Engineer',
@@ -29,6 +31,7 @@ export default function RootLayout({
         <AOSInitializer />
         <NavigationClient />
         <ThemeHandler />
+        <ScrollProgress />
         <div id="sidebar-overlay" className="sidebar-overlay"></div>
         <button id="mobile-sidebar-toggle-btn" className="mobile-sidebar-toggle" aria-label="Toggle sidebar">
           <i className="fas fa-bars"></i>
@@ -136,6 +139,7 @@ export default function RootLayout({
         <button id="global-theme-toggle" className="global-theme-toggle" aria-label="Toggle dark mode">
             <i className="fas fa-moon"></i>
         </button>
+        <BackToTopButton />
 
         {/* Scripts - AOS will be handled differently in Next.js, placeholder for now */}
         {/* <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script> */}
