@@ -618,6 +618,11 @@ section {
     margin-bottom: var(--spacing-6);
 }
 
+/* Education Section */
+.education {
+    background-color: var(--bg-primary);
+}
+
 .education-timeline {
     position: relative;
 }
@@ -866,6 +871,9 @@ section {
 
 /* --- Project List & Filters (ProjectList.tsx) --- */
 /* Projects Section */
+.projects {
+    background-color: var(--bg-secondary);
+}
 .project-filters {
     display: flex;
     justify-content: center;
@@ -993,7 +1001,7 @@ section {
 
 /* Publications Section */
 .publications {
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
 }
 
 .publications-list {
@@ -1091,6 +1099,9 @@ section {
 }
 
 /* Achievements List View */
+.achievements {
+    background-color: var(--bg-secondary);
+}
 .achievements-list {
     max-width: 900px;
     margin: 0 auto;
