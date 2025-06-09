@@ -1902,4 +1902,39 @@ textarea:focus {
     height: 10rem;
     margin: 0;
 }
+
+.intro-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-4);
+    margin-top: var(--spacing-6);
+}
+
+.intro-icon {
+    font-size: var(--font-size-2xl);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.intro-icon:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.intro-btn {
+    padding: var(--spacing-2) var(--spacing-4);
+    border-radius: var(--radius);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.intro-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
 /* --- End Home Intro Section --- */

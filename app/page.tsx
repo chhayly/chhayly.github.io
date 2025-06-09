@@ -20,6 +20,35 @@ export default function Home() {
                 "Building intelligent systems for a smarter, more sustainable world."
                 <i className="fas fa-quote-right"></i>
               </p>
+              <div className="intro-links">
+                <a
+                  href="https://github.com/chhayly"
+                  className="intro-icon"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <i className="fab fa-github"></i>
+                </a>
+                <a
+                  href="https://linkedin.com/in/chhayly-sreng"
+                  className="intro-icon"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <i className="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:chhayly.sreng@gmail.com" className="intro-icon" aria-label="Email">
+                  <i className="fas fa-envelope"></i>
+                </a>
+                <a href="/documents/resume.pdf" className="intro-btn" download>
+                  Resume
+                </a>
+                <a href="/documents/cv.pdf" className="intro-btn" download>
+                  CV
+                </a>
+              </div>
             </div>
           </div>
         </div>
