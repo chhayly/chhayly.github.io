@@ -1938,3 +1938,14 @@ textarea:focus {
     color: #fff;
 }
 /* --- End Home Intro Section --- */
+
+/* Home Skills Section */
+.home-skills {
+    padding: var(--spacing-16) 0;
+    background-color: var(--bg-secondary);
+}
+
+/* Home Projects Section */
+.home-projects {
+    padding: var(--spacing-16) 0;
+}

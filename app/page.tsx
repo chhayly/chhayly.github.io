@@ -1,4 +1,8 @@
+import contentData from './data/content.json';
+import ProjectList from './components/features/projects/ProjectList';
+
 export default function Home() {
+  const { projects } = contentData;
   return (
     <main>
       <section className="home-intro">
@@ -51,6 +55,33 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="skills" className="skills home-skills">
+        <div className="container">
+          <h2 className="section-title">Skills</h2>
+          <div className="skills-grid">
+            <div className="skills-group">
+              <h4>Programming Languages</h4>
+              <p className="skill-line">Python · JavaScript · TypeScript · C# · C++ · Java · SQL</p>
+            </div>
+            <div className="skills-group">
+              <h4>AI &amp; Data</h4>
+              <p className="skill-line">TensorFlow · PyTorch · OpenCV · scikit-learn · Pandas · NumPy · Librosa</p>
+            </div>
+            <div className="skills-group">
+              <h4>DevOps &amp; Tools</h4>
+              <p className="skill-line">Docker · Git · CI/CD · Redis · React · Node.js · Django · Flask</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" className="projects home-projects">
+        <div className="container">
+          <h2 className="section-title">Highlighted Projects</h2>
+          <ProjectList projects={projects.slice(0, 3)} />
         </div>
       </section>
     </main>
