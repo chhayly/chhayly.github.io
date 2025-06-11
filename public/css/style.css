@@ -1949,3 +1949,55 @@ textarea:focus {
 .home-projects {
     padding: var(--spacing-16) 0;
 }
+
+/* Home page custom layout tweaks */
+.home-skills .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-8);
+}
+
+.home-skills .skills-group {
+    background-color: var(--bg-primary);
+    padding: var(--spacing-6);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.home-skills .skills-group h4 {
+    margin-bottom: var(--spacing-3);
+    font-size: var(--font-size-lg);
+}
+
+.home-skills .skill-list {
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-2);
+}
+
+.home-skills .skill-list li {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+}
+
+.home-projects .project-filters {
+    display: none;
+}
+
+.home-projects .projects-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-8);
+    max-width: none;
+    margin: 0;
+}
+
+.home-projects .project-item {
+    flex-direction: column;
+}
+
+.home-projects .project-image-container {
+    margin: 0 0 var(--spacing-4);
+}

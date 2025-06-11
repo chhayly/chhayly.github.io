@@ -64,15 +64,40 @@ export default function Home() {
           <div className="skills-grid">
             <div className="skills-group">
               <h4>Programming Languages</h4>
-              <p className="skill-line">Python · JavaScript · TypeScript · C# · C++ · Java · SQL</p>
+              <ul className="skill-list">
+                <li>Python</li>
+                <li>JavaScript</li>
+                <li>TypeScript</li>
+                <li>C#</li>
+                <li>C++</li>
+                <li>Java</li>
+                <li>SQL</li>
+              </ul>
             </div>
             <div className="skills-group">
               <h4>AI &amp; Data</h4>
-              <p className="skill-line">TensorFlow · PyTorch · OpenCV · scikit-learn · Pandas · NumPy · Librosa</p>
+              <ul className="skill-list">
+                <li>TensorFlow</li>
+                <li>PyTorch</li>
+                <li>OpenCV</li>
+                <li>scikit-learn</li>
+                <li>Pandas</li>
+                <li>NumPy</li>
+                <li>Librosa</li>
+              </ul>
             </div>
             <div className="skills-group">
               <h4>DevOps &amp; Tools</h4>
-              <p className="skill-line">Docker · Git · CI/CD · Redis · React · Node.js · Django · Flask</p>
+              <ul className="skill-list">
+                <li>Docker</li>
+                <li>Git</li>
+                <li>CI/CD</li>
+                <li>Redis</li>
+                <li>React</li>
+                <li>Node.js</li>
+                <li>Django</li>
+                <li>Flask</li>
+              </ul>
             </div>
           </div>
         </div>
