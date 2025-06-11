@@ -952,6 +952,7 @@ section {
 
 .project-content p {
     color: var(--text-secondary);
+    font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-4);
     line-height: 1.6;
 }
@@ -1948,6 +1949,7 @@ textarea:focus {
 /* Home Projects Section */
 .home-projects {
     padding: var(--spacing-16) 0;
+    background-color: var(--bg-secondary);
 }
 
 /* Home page custom layout tweaks */
@@ -1978,7 +1980,7 @@ textarea:focus {
 }
 
 .home-skills .skill-list li {
-    font-size: var(--font-size-sm);
+    font-size: var(--font-size-lg);
     color: var(--text-secondary);
 }
 
