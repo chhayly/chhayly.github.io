@@ -84,11 +84,31 @@ html {
 body {
     font-family: var(--font-family);
     line-height: 1.7;
+    font-size: var(--font-size-base);
     color: var(--text-primary);
     background-color: var(--bg-primary);
     transition: var(--transition);
     height: 100%;
     overflow-x: hidden;
+}
+
+h1 {
+    font-size: var(--font-size-4xl);
+}
+h2 {
+    font-size: var(--font-size-3xl);
+}
+h3 {
+    font-size: var(--font-size-2xl);
+}
+h4 {
+    font-size: var(--font-size-xl);
+}
+h5 {
+    font-size: var(--font-size-lg);
+}
+h6 {
+    font-size: var(--font-size-base);
 }
 
 .container {
@@ -548,8 +568,8 @@ body {
 
 /* Section Styles */
 section {
-    padding: var(--spacing-16) 0; /* Reduced from --spacing-20 */
-    min-height: 80vh;
+    padding: var(--spacing-12) 0;
+    min-height: auto;
 }
 
 .section-title {
@@ -1877,7 +1897,7 @@ textarea:focus {
 
 /* --- Home Intro Section --- */
 .home-intro {
-    padding: var(--spacing-16) 0;
+    padding: var(--spacing-12) 0;
 }
 
 .intro-content {
