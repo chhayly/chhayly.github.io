@@ -1963,17 +1963,17 @@ textarea:focus {
 /* Home Skills Section */
 
 .home-skills {
-    padding: var(--spacing-12) 0; /* reduce spacing */
-    background-color: var(--bg-primary); /* keep white background */
-    min-height: auto; /* override global min-height */
+    padding: var(--spacing-8) 0; /* tighter spacing */
+    background-color: var(--bg-primary);
+    min-height: auto;
 }
 
 /* Home Projects Section */
 
 .home-projects {
-    padding: var(--spacing-12) 0; /* reduce spacing */
-    background-color: var(--bg-primary); /* keep white background */
-    min-height: auto; /* override global min-height */
+    padding: var(--spacing-8) 0; /* tighter spacing */
+    background-color: var(--bg-primary);
+    min-height: auto;
 }
 
 /* Home page custom layout tweaks */
@@ -2004,7 +2004,7 @@ textarea:focus {
 }
 
 .home-skills .skill-list li {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-base);
     color: var(--text-secondary);
 }
 
@@ -2026,4 +2026,13 @@ textarea:focus {
 
 .home-projects .project-image-container {
     margin: 0 0 var(--spacing-4);
+}
+
+.home-skills .section-title,
+.home-projects .section-title {
+    margin-bottom: var(--spacing-8);
+}
+
+.home-projects .project-content p {
+    font-size: var(--font-size-base);
 }
