@@ -7,24 +7,24 @@
 
 :root {
     /* Light theme colors */
-    --primary-color: #3b82f6;
-    --primary-dark: #2563eb;
-    --secondary-color: #6366f1;
-    --accent-color: #10b981;
-    --text-primary: #1f2937;
-    --text-secondary: #5A6470; /* Adjusted from #6b7280 */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f9fafb;
-    --bg-tertiary: #f3f4f6;
-    --border-color: #DDE1E6; /* Adjusted from #e5e7eb */
-    --shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.08), 0 4px 5px 0 rgba(0,0,0,0.05); /* Adjusted shadow */
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0,0,0,0.04); /* Adjusted shadow-lg */
+    --primary-color: #000;
+    --primary-dark: #000;
+    --secondary-color: #666;
+    --accent-color: #000;
+    --text-primary: #000;
+    --text-secondary: #444;
+    --bg-primary: #fff;
+    --bg-secondary: #f6f6f6;
+    --bg-tertiary: #efefef;
+    --border-color: #ddd;
+    --shadow: none;
+    --shadow-lg: none;
     
     /* Layout */
     --sidebar-width: 360px; /* Changed from 320px */
     
     /* Typography */
-    --font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-family: 'Helvetica Neue', Arial, sans-serif;
     --font-size-xs: 0.875rem; /* 14px */
     --font-size-sm: 1.0625rem; /* 17px */
     --font-size-base: 1.1875rem; /* 19px */
@@ -61,18 +61,18 @@
 /* --- Dark Theme Variables (ThemeHandler.tsx) --- */
 /* Dark theme */
 [data-theme="dark"] {
-    --primary-color: #60a5fa;
-    --primary-dark: #3b82f6;
-    --secondary-color: #818cf8;
-    --accent-color: #34d399;
-    --text-primary: #f9fafb;
-    --text-secondary: #D8DEE9; /* Adjusted from #d1d5db */
-    --bg-primary: #111827;
-    --bg-secondary: #1f2937;
-    --bg-tertiary: #374151;
-    --border-color: #525E6E; /* Adjusted from #4b5563 */
-    --shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.25), 0 4px 5px 0 rgba(0,0,0,0.2); /* Adjusted dark shadow */
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.25), 0 4px 6px -2px rgba(0,0,0,0.2); /* Adjusted dark shadow-lg */
+    --primary-color: #fff;
+    --primary-dark: #eee;
+    --secondary-color: #ccc;
+    --accent-color: #fff;
+    --text-primary: #fff;
+    --text-secondary: #aaa;
+    --bg-primary: #111;
+    --bg-secondary: #222;
+    --bg-tertiary: #333;
+    --border-color: #444;
+    --shadow: none;
+    --shadow-lg: none;
 }
 /* --- End Dark Theme Variables (ThemeHandler.tsx) --- */
 
@@ -84,11 +84,31 @@ html {
 body {
     font-family: var(--font-family);
     line-height: 1.7;
+    font-size: var(--font-size-base);
     color: var(--text-primary);
     background-color: var(--bg-primary);
     transition: var(--transition);
     height: 100%;
     overflow-x: hidden;
+}
+
+h1 {
+    font-size: var(--font-size-4xl);
+}
+h2 {
+    font-size: var(--font-size-3xl);
+}
+h3 {
+    font-size: var(--font-size-2xl);
+}
+h4 {
+    font-size: var(--font-size-xl);
+}
+h5 {
+    font-size: var(--font-size-lg);
+}
+h6 {
+    font-size: var(--font-size-base);
 }
 
 .container {
@@ -242,7 +262,7 @@ body {
 .profile-image {
     width: 14rem; /* Changed from 5rem */
     height: 14rem; /* Changed from 5rem */
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--bg-secondary);
     border-radius: var(--radius); /* Changed from 50% */
     display: flex;
     align-items: center;
@@ -548,8 +568,8 @@ body {
 
 /* Section Styles */
 section {
-    padding: var(--spacing-16) 0; /* Reduced from --spacing-20 */
-    min-height: 80vh;
+    padding: var(--spacing-12) 0;
+    min-height: auto;
 }
 
 .section-title {
@@ -568,9 +588,8 @@ section {
     left: 50%;
     transform: translateX(-50%);
     width: 4rem;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    border-radius: var(--radius);
+    height: 2px;
+    background: var(--primary-color);
 }
 
 /* About Section */
@@ -587,6 +606,8 @@ section {
 }
 
 .about-left{display:flex;flex-direction:column;gap:var(--spacing-8)}
+.about-profile{text-align:center;margin-bottom:var(--spacing-8)}
+.profile-name{font-size:var(--font-size-2xl);font-weight:700;color:var(--text-primary);margin-top:var(--spacing-4)}
 
 .about-text p {
     font-size: var(--font-size-lg);
@@ -634,7 +655,7 @@ section {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
 }
 
 .education-item {
@@ -772,7 +793,7 @@ section {
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
 }
 
 .timeline-item {
@@ -872,7 +893,7 @@ section {
 /* --- Project List & Filters (ProjectList.tsx) --- */
 /* Projects Section */
 .projects {
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
 }
 .project-filters {
     display: flex;
@@ -928,12 +949,12 @@ section {
 .project-icon {
     width: 5rem;
     height: 5rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
     border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--bg-primary);
     font-size: 2rem;
     flex-shrink: 0;
     margin-right: var(--spacing-6);
@@ -951,6 +972,7 @@ section {
 
 .project-content p {
     color: var(--text-secondary);
+    font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-4);
     line-height: 1.6;
 }
@@ -1027,12 +1049,12 @@ section {
 .publication-icon {
     width: 4rem;
     height: 4rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
     border-radius: var(--radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--bg-primary);
     font-size: 1.5rem;
     flex-shrink: 0;
     margin-right: var(--spacing-6);
@@ -1100,7 +1122,7 @@ section {
 
 /* Achievements List View */
 .achievements {
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
 }
 .achievements-list {
     max-width: 900px;
@@ -1130,12 +1152,12 @@ section {
 .achievement-icon {
     width: 4rem;
     height: 4rem;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
+    color: var(--bg-primary);
     font-size: var(--font-size-xl);
     flex-shrink: 0;
 }
@@ -1283,9 +1305,9 @@ section {
     position: fixed;
     top: 0;
     left: 0;
-    height: 4px;
+    height: 2px;
     width: 0;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
     z-index: 1500;
     transition: width 0.2s ease;
 }
@@ -1403,6 +1425,15 @@ section {
 
     .skills-grid {
         grid-template-columns: 1fr;
+    }
+
+    .intro-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .intro-text {
+        text-align: center;
     }
 
     .timeline {
@@ -1601,7 +1632,6 @@ textarea:focus {
 .skills-group h4{font-size:var(--font-size-base);color:var(--primary-color);margin-bottom:var(--spacing-1)}
 .skill-line{color:var(--text-secondary);font-size:var(--font-size-sm);}
 
-.about-skills{margin-top:var(--spacing-12)}
 
 /* --- Global Theme Toggle (ThemeHandler.tsx) --- */
 .global-theme-toggle{position:fixed;top:1rem;right:1rem;width:3rem;height:3rem;border-radius:50%;background-color:var(--bg-tertiary);color:var(--text-primary);border:none;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);cursor:pointer;transition:var(--transition);z-index:1200}
@@ -1709,7 +1739,7 @@ textarea:focus {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: var(--primary-color);
     border-radius: var(--radius-xl); /* Or 1rem */
     color: white;
     font-size: 4rem; /* Or as needed */
@@ -1815,3 +1845,194 @@ textarea:focus {
     }
 }
 /* --- End Project Modal Content (ProjectList.tsx) --- */
+
+/* --- Minimal Header and Layout --- */
+.site-header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    padding: var(--spacing-3) 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.site-nav {
+    display: flex;
+    gap: var(--spacing-4);
+}
+
+.site-nav a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: var(--font-size-sm);
+    transition: var(--transition-fast);
+}
+
+.site-nav a:hover {
+    color: var(--primary-color);
+}
+
+.site-main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: var(--spacing-6);
+}
+/* --- End Minimal Header and Layout --- */
+
+/* --- Home Intro Section --- */
+.home-intro {
+    padding: var(--spacing-12) 0;
+}
+
+.intro-content {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--spacing-8);
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.intro-text {
+    text-align: left;
+}
+
+.home-message {
+    margin: var(--spacing-6) 0;
+    color: var(--text-secondary);
+}
+
+.intro-profile .profile-image {
+    width: 10rem;
+    height: 10rem;
+    margin: 0;
+}
+
+.intro-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-4);
+    margin-top: var(--spacing-6);
+}
+
+.intro-icon {
+    font-size: var(--font-size-2xl);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.intro-icon:hover {
+    color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.intro-btn {
+    padding: var(--spacing-2) var(--spacing-4);
+    border-radius: var(--radius);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: var(--font-size-sm);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.intro-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+/* --- End Home Intro Section --- */
+
+/* Home Skills Section */
+
+.home-skills {
+    padding: var(--spacing-8) 0; /* tighter spacing */
+    background-color: var(--bg-primary);
+    min-height: auto;
+}
+
+/* Home Projects Section */
+
+.home-projects {
+    padding: var(--spacing-8) 0; /* tighter spacing */
+    background-color: var(--bg-primary);
+    min-height: auto;
+}
+
+/* Home page custom layout tweaks */
+.home-skills .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-8);
+}
+
+.home-skills .skills-group {
+    background-color: var(--bg-primary);
+    padding: var(--spacing-6);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.home-skills .skills-group h4 {
+    margin-bottom: var(--spacing-3);
+    font-size: var(--font-size-lg);
+}
+
+.home-skills .skill-list {
+    list-style: none;
+    padding-left: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-2);
+}
+
+.home-skills .skill-list li {
+    font-size: var(--font-size-base);
+    color: var(--text-secondary);
+}
+
+.home-projects .project-filters {
+    display: none;
+}
+
+.home-projects .projects-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-8);
+    max-width: none;
+    margin: 0;
+}
+
+.home-projects .project-item {
+    flex-direction: column;
+}
+
+.home-projects .project-image-container {
+    margin: 0 0 var(--spacing-4);
+}
+
+.home-skills .section-title,
+.home-projects .section-title {
+    margin-bottom: var(--spacing-8);
+}
+
+.home-projects .project-content p {
+    font-size: var(--font-size-base);
+}
