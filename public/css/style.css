@@ -893,7 +893,7 @@ section {
 /* --- Project List & Filters (ProjectList.tsx) --- */
 /* Projects Section */
 .projects {
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
 }
 .project-filters {
     display: flex;
@@ -1122,7 +1122,7 @@ section {
 
 /* Achievements List View */
 .achievements {
-    background-color: var(--bg-secondary);
+    background-color: var(--bg-primary);
 }
 .achievements-list {
     max-width: 900px;
